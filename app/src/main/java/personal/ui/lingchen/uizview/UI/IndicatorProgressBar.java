@@ -59,11 +59,12 @@ public class IndicatorProgressBar extends View {
         this.invalidate();
     }
 
-    private void initMaxProgress(int max) {
+    public void setMaxProgress(int max) {
         this.maxValue = max;
+        this.invalidate();
     }
 
-    private int getMaxProgress() {
+    public int getMaxProgress() {
         return this.maxValue;
     }
 
