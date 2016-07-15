@@ -34,12 +34,25 @@
           <State>
             <id />
           </State>
-        </expanded-state>
-        <selected-state>
           <State>
             <id>Android</id>
           </State>
-        </selected-state>
+          <State>
+            <id>Android Lint</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>Gradle</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>Probable bugsGradle</id>
+          </State>
+        </expanded-state>
       </profile-state>
     </entry>
   </component>
@@ -60,22 +73,10 @@
     <option name="id" value="Android" />
   </component>
   <component name="SvnConfiguration" myUseAcceleration="nothing">
-    <configuration useDefault="false">C:\Users\xinde\AppData\Roaming\Subversion</configuration>
+    <configuration>C:\Users\ozner_67\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ScopeChooserConfigurable.UI">
         <settings>
           <splitter-proportions>
