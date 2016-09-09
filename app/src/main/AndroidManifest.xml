@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".UIActivity.BezierTestActivity">
         </activity>
+        <activity android:name=".UIActivity.OzerDialActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -43,5 +43,10 @@
             android:text="贝塞尔曲线"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_oznerDial"
+            android:text="净水家表盘"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>

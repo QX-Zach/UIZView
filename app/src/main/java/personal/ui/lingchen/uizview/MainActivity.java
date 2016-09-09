@@ -16,6 +16,7 @@ import butterknife.OnClick;
 import personal.ui.lingchen.uizview.LoadingUI.SlackLoading.SlackLoadingActivity;
 import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.IndicatorProgressActivity;
+import personal.ui.lingchen.uizview.UIActivity.OzerDialActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @InjectView(R.id.btn_indicatorProgress)
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnSlackView;
     @InjectView(R.id.btn_bezier)
     Button btnBezier;
+    @InjectView(R.id.btn_oznerDial)
+    Button btnOznerDial;
 
 
     @Override
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.inject(this);
     }
 
-    @OnClick({R.id.btn_indicatorProgress, R.id.btn_bezier,R.id.btn_slackView, R.id.btn_animation})
+    @OnClick({R.id.btn_indicatorProgress,R.id.btn_oznerDial, R.id.btn_bezier, R.id.btn_slackView, R.id.btn_animation})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -52,7 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_bezier:
                 startActivity(new Intent(MainActivity.this, BezierTestActivity.class));
-
+                break;
+            case R.id.btn_oznerDial:
+                startActivity(new Intent(MainActivity.this, OzerDialActivity.class));
                 break;
         }
     }
