@@ -48,5 +48,35 @@
             android:text="净水家表盘"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <Button
+            android:textAllCaps="false"
+            android:id="@+id/btn_RecyleView"
+            android:text="RecyleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_snowflake"
+            android:text="雪花飘落"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <personal.ui.lingchen.uizview.UI.HexagonView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/hexagonView"/>
+
+    <ImageView
+        android:id="@+id/iv_hex"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+    <ImageView
+        android:id="@+id/iv_hex2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
 </LinearLayout>

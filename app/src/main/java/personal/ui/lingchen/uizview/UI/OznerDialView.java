@@ -74,6 +74,40 @@ public class OznerDialView extends CustomerBaseView {
         outerRadius -= dp2px(getContext(), LINE_WIDTH_DP) / 2;
     }
 
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int defalutWidth = 600;
+        int defaultHeight = 300;
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int width, height;
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize;
+        } else if (widthMode == MeasureSpec.AT_MOST) {
+            width = Math.max(defalutWidth, widthSize);
+        } else if (widthMode == MeasureSpec.UNSPECIFIED) {
+            width = defalutWidth;
+        } else {
+            width = defalutWidth;
+        }
+//        if (heightMode == MeasureSpec.EXACTLY) {
+//            height = heightSize;
+//        } else if (heightMode == MeasureSpec.AT_MOST) {
+//            height = Math.min(defaultHeight, heightSize);
+//        } else if (heightMode == MeasureSpec.UNSPECIFIED) {
+//            height = defaultHeight;
+//        } else {
+//            height = defaultHeight;
+//        }
+
+        height = width / 2;
+
+        setMeasuredDimension(width, height);
+    }
+
     /**
      * 获取半透明部分的颜色
      *

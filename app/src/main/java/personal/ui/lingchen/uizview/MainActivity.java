@@ -3,20 +3,25 @@ package personal.ui.lingchen.uizview;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import personal.ui.lingchen.uizview.LoadingUI.SlackLoading.SlackLoadingActivity;
+import personal.ui.lingchen.uizview.UI.HexagonDrawable;
+import personal.ui.lingchen.uizview.UI.Snowflake.SnowFlokeActivity;
 import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.IndicatorProgressActivity;
 import personal.ui.lingchen.uizview.UIActivity.OzerDialActivity;
+import personal.ui.lingchen.uizview.UIActivity.RecyleViewActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @InjectView(R.id.btn_indicatorProgress)
@@ -31,6 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnBezier;
     @InjectView(R.id.btn_oznerDial)
     Button btnOznerDial;
+    @InjectView(R.id.iv_hex)
+    ImageView ivHex;
+    @InjectView(R.id.iv_hex2)
+    ImageView ivHex2;
+    @InjectView(R.id.btn_RecyleView)
+    Button btnRecyleView;
 
 
     @Override
@@ -38,9 +49,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+        HexagonDrawable hexagonDrawable = new HexagonDrawable();
+        hexagonDrawable.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.meizi5));
+        ivHex.setImageDrawable(hexagonDrawable);
+        HexagonDrawable hexagonDrawable2 = new HexagonDrawable();
+        hexagonDrawable2.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.meizi1));
+        ivHex2.setImageDrawable(hexagonDrawable2);
+
     }
 
-    @OnClick({R.id.btn_indicatorProgress,R.id.btn_oznerDial, R.id.btn_bezier, R.id.btn_slackView, R.id.btn_animation})
+    @OnClick({R.id.btn_indicatorProgress, R.id.btn_RecyleView, R.id.btn_oznerDial, R.id.btn_bezier,
+            R.id.btn_slackView, R.id.btn_animation,R.id.btn_snowflake})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -59,6 +78,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_oznerDial:
                 startActivity(new Intent(MainActivity.this, OzerDialActivity.class));
                 break;
+            case R.id.btn_RecyleView:
+                startActivity(new Intent(MainActivity.this, RecyleViewActivity.class));
+                break;
+            case R.id.btn_snowflake:
+                startActivity(new Intent(MainActivity.this, SnowFlokeActivity.class));
+                break;
+
         }
     }
 
