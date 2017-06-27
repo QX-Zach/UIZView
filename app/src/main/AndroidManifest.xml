@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".UI.Snowflake.SnowFlokeActivity">
         </activity>
+        <activity android:name=".UIActivity.SeekBarActivity">
+        </activity>
     </application>
 
 </manifest>

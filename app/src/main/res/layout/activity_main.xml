@@ -64,6 +64,12 @@
             android:text="雪花飘落"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_seekBar"
+            android:textAllCaps="false"
+            android:text="SeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <personal.ui.lingchen.uizview.UI.HexagonView

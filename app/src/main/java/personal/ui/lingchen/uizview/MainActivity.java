@@ -22,6 +22,7 @@ import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.IndicatorProgressActivity;
 import personal.ui.lingchen.uizview.UIActivity.OzerDialActivity;
 import personal.ui.lingchen.uizview.UIActivity.RecyleViewActivity;
+import personal.ui.lingchen.uizview.UIActivity.SeekBarActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @InjectView(R.id.btn_indicatorProgress)
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView ivHex2;
     @InjectView(R.id.btn_RecyleView)
     Button btnRecyleView;
+    @InjectView(R.id.btn_seekBar)
+    Button btnSeekBar;
 
 
     @Override
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @OnClick({R.id.btn_indicatorProgress, R.id.btn_RecyleView, R.id.btn_oznerDial, R.id.btn_bezier,
-            R.id.btn_slackView, R.id.btn_animation,R.id.btn_snowflake})
+            R.id.btn_slackView, R.id.btn_animation,R.id.btn_snowflake,R.id.btn_seekBar})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -83,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_snowflake:
                 startActivity(new Intent(MainActivity.this, SnowFlokeActivity.class));
+                break;
+            case R.id.btn_seekBar:
+                startActivity(new Intent(MainActivity.this, SeekBarActivity.class));
                 break;
 
         }
