@@ -13,13 +13,40 @@
         android:id="@+id/ui_seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="1000"
         android:maxHeight="5dp"
-        android:progressDrawable="@drawable/seek"
+        android:progress="10"
+        android:progressDrawable="@drawable/kettle_preservation_time_seekbar_bg"
         android:splitTrack="false"
-        android:thumb="@drawable/seek_instrucrt"
+        android:thumb="@drawable/kettle_advance_switcher_thumb_off"
+        app:floatTypeDPI="10"
+        app:isFloatType="true"
         app:numScale="0.16"
-        app:numTextColor="@color/black"
+        app:numTextColor="@color/air_soso_bg"
         app:numTextFormat="℃"
         app:numType="top"
-       />
+
+        app:processMax="100"
+        app:processMin="100"
+        />
+
+
+    <personal.ui.lingchen.uizview.UI.bubbleseekbar.BubbleSeekBar
+        android:id="@+id/demo_4_seek_bar_3"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        app:bsb_always_show_bubble="false"
+        app:bsb_auto_adjust_section_mark="true"
+        app:bsb_bubble_text_color="@color/color_blue"
+        app:bsb_second_track_color="@color/color_red"
+        app:bsb_section_count="20"
+        app:bsb_section_text_position="below_section_mark"
+        app:bsb_show_thumb_text="false"
+        app:bsb_show_section_mark="false"
+        app:bsb_show_section_text="false"
+        app:bsb_suffix="℃"
+        app:bsb_touch_to_seek="false"
+        app:bsb_track_color="@color/color_red_light"/>
 </LinearLayout>

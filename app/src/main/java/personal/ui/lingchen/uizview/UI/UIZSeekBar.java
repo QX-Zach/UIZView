@@ -21,9 +21,15 @@ import personal.ui.lingchen.uizview.R;
 /**
  * Created by ozner_67 on 2017/6/22.
  * 邮箱：xinde.zhang@cftcn.com
+ * <p>
+ * float类型先转换成整形，只处理一位小数
  */
 
 public class UIZSeekBar extends AppCompatSeekBar {
+    private static final int DefaultMin = 0;
+    private static final int DefaultMax = 100;
+    private static final int DefalutDPI = 10;
+    private boolean isFloatType = false;
     //进度条指示文字后缀
     private String numTextFormat = "%";
 
@@ -52,7 +58,11 @@ public class UIZSeekBar extends AppCompatSeekBar {
     //特别说明这个scale比例是滑动的指示器小箭头部分占全部图片的比列，为了使其文字完全居中
     private double numScale = 0.16;
 
-    private boolean isTouchDown = false;
+    private int processMin = DefaultMin;
+    private int processMax = DefaultMax;
+    private int floatTypeDPI = DefalutDPI;
+    private boolean isSection = false;//是否有节点
+    private int mDelta;//max - min
 
 
     public UIZSeekBar(Context context) {
@@ -79,25 +89,41 @@ public class UIZSeekBar extends AppCompatSeekBar {
     private void setPadding() {
         switch (type) {
             case Gravity.TOP:
-                setPadding((int) Math.ceil(bmp_width) / 2, (int) Math.ceil(bmp_height), (int) Math.ceil(bmp_width) / 2, 0);
+                setPadding((int) Math.ceil(bmp_width) / 2 + (int) dpToPx(10), (int) Math.ceil(bmp_height), (int) Math.ceil(bmp_width) / 2 + (int) dpToPx(10), 0);
                 break;
 
             case Gravity.BOTTOM:
-                setPadding((int) Math.ceil(bmp_width) / 2, 0, (int) Math.ceil(bmp_width) / 2, (int) Math.ceil(bmp_height));
+                setPadding((int) Math.ceil(bmp_width) / 2 + (int) dpToPx(10), 0, (int) Math.ceil(bmp_width) / 2 + (int) dpToPx(10), (int) Math.ceil(bmp_height));
                 break;
         }
 
     }
 
+    @Override
+    public synchronized void setProgress(int progress) {
+        super.setProgress(progress - processMin);
+    }
+
+    public synchronized void setProgress(float progress) {
+        if (isFloatType) {
+            super.setProgress((int) (floatTypeDPI * progress) - processMin);
+        }
+    }
 
     @Override
     protected synchronized void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         try {
-
-
             fm = bmPaint.getFontMetrics();
-            numText = (getProgress() * 100 / getMax()) + numTextFormat;
+            if (isFloatType) {
+                if (floatTypeDPI == 10) {
+                    numText = String.format("%.1f%s", getProgress() * 1f / floatTypeDPI + processMin, numTextFormat);
+                } else if (floatTypeDPI == 100) {
+                    numText = String.format("%.2f%s", getProgress() * 1f / floatTypeDPI + processMin, numTextFormat);
+                }
+            } else {
+                numText = (getProgress() + processMin) + numTextFormat;
+            }
             numTextWidth = bmPaint.measureText(numText);
 
             rect_seek = this.getProgressDrawable().getBounds();
@@ -114,22 +140,19 @@ public class UIZSeekBar extends AppCompatSeekBar {
             //计算文字的中心位置在bitmap
             float text_x = rect_seek.width() * getProgress() / getMax() + (bmp_width - numTextWidth) / 2;
             //还应该减去文字的高度
-
             float text_y = bmp_height / 2;
             float text_center = bmp_height / 2 - fm.descent + (fm.descent - fm.ascent) / 2;
             switch (type) {
                 case Gravity.TOP:
                     canvas.drawBitmap(bm, bm_x, 0, bmPaint);
                     //img_height / 2 - fm.descent + (fm.descent - fm.ascent) / 2
-                    if (isTouchDown)
-                        canvas.drawText(numText, text_x, (float) (bmp_height / 2 - (fm.descent - (fm.descent - fm.ascent) / 2) - (bmp_height * numScale) / 2), bmPaint);
+                    canvas.drawText(numText, text_x, (float) (bmp_height / 2 - (fm.descent - (fm.descent - fm.ascent) / 2) - (bmp_height * numScale) / 2), bmPaint);
                     break;
                 case Gravity.BOTTOM:
                     //+rect_thum.height()/2-rect_seek.height()/2
                     canvas.drawBitmap(bm, bm_x, rect_thum.height(), bmPaint);
                     //  canvas.drawText(numText,text_x, (float) (bmp_height / 2 -( fm.descent -(fm.descent - fm.ascent) / 2)+rect_seek.height()+20+(bmp_height*numScale)/2),bmPaint);
-                    if (isTouchDown)
-                        canvas.drawText(numText, text_x, (float) (thum_height + (bmp_height / 2 - (fm.descent - (fm.descent - fm.ascent) / 2) + bmp_height * numScale / 2)), bmPaint);
+                    canvas.drawText(numText, text_x, (float) (thum_height + (bmp_height / 2 - (fm.descent - (fm.descent - fm.ascent) / 2) + bmp_height * numScale / 2)), bmPaint);
                     break;
                 default:
                     break;
@@ -147,11 +170,6 @@ public class UIZSeekBar extends AppCompatSeekBar {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            isTouchDown = true;
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            isTouchDown = false;
-        }
         invalidate();
         return super.onTouchEvent(event);
     }
@@ -181,6 +199,17 @@ public class UIZSeekBar extends AppCompatSeekBar {
                 TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
         numTextColor = array.getColor(R.styleable.CustomSeekBar_numTextColor, Color.WHITE);
         type = array.getInt(R.styleable.CustomSeekBar_numType, Gravity.TOP);
+        isSection = array.getBoolean(R.styleable.CustomSeekBar_isSection, false);
+        isFloatType = array.getBoolean(R.styleable.CustomSeekBar_isFloatType, false);
+        if (isFloatType) {
+            floatTypeDPI = array.getInt(R.styleable.CustomSeekBar_floatTypeDPI, 10);
+            processMin = (int) (floatTypeDPI * array.getFloat(R.styleable.CustomSeekBar_processMin, DefaultMin));
+            processMax = (int) (floatTypeDPI * array.getFloat(R.styleable.CustomSeekBar_processMax, DefaultMax));
+        } else {
+            processMin = array.getInt(R.styleable.CustomSeekBar_processMin, DefaultMin);
+            processMax = array.getInt(R.styleable.CustomSeekBar_processMax, DefaultMax);
+        }
+        setMax(processMax);
 
         numScale = Double.parseDouble(array.getString(R.styleable.CustomSeekBar_numScale) == null ? numScale + "" : array.getString(R.styleable.CustomSeekBar_numScale));
         numTextFormat = numTextFormat == null ? "%" : numTextFormat;
@@ -204,7 +233,6 @@ public class UIZSeekBar extends AppCompatSeekBar {
 
     public void setNumTextSize(int numTextSize) {
         this.numTextSize = numTextSize;
-
     }
 
     public int getNumbackground() {
@@ -221,5 +249,9 @@ public class UIZSeekBar extends AppCompatSeekBar {
 
     public void setNumTextColor(int numTextColor) {
         this.numTextColor = numTextColor;
+    }
+
+    protected float dpToPx(float dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 }
