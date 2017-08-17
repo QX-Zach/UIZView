@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="15dp"
-    tools:context="personal.ui.lingchen.uizview.MainActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="15dp"
+              tools:context="personal.ui.lingchen.uizview.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello World!"/>
 
     <LinearLayout
         android:id="@+id/llay_btn_root"
@@ -22,67 +23,100 @@
             android:id="@+id/btn_indicatorProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="指示器进度条" />
+            android:text="指示器进度条"/>
+
         <Button
-            android:text="属性动画"
             android:id="@+id/btn_animation"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="属性动画"/>
+
         <Button
-            android:text="加载动画"
             android:id="@+id/btn_slackView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="加载动画"/>
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_bezier"
-            android:text="贝塞尔曲线"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="贝塞尔曲线"/>
+
         <Button
             android:id="@+id/btn_oznerDial"
-            android:text="净水家表盘"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="净水家表盘"/>
+
         <Button
-            android:textAllCaps="false"
             android:id="@+id/btn_RecyleView"
-            android:text="RecyleView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="RecyleView"
+            android:textAllCaps="false"/>
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_snowflake"
-            android:text="雪花飘落"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="雪花飘落"/>
+
         <Button
             android:id="@+id/btn_seekBar"
-            android:textAllCaps="false"
-            android:text="SeekBar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="SeekBar"
+            android:textAllCaps="false"/>
     </LinearLayout>
 
-    <personal.ui.lingchen.uizview.UI.HexagonView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/hexagonView"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
-    <ImageView
-        android:id="@+id/iv_hex"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
-    <ImageView
-        android:id="@+id/iv_hex2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
+        <personal.ui.lingchen.uizview.UI.HexagonView
+            android:id="@+id/hexagonView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <ImageView
+            android:id="@+id/iv_hex"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <ImageView
+            android:id="@+id/iv_hex2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <personal.ui.lingchen.uizview.UI.UIZTextImageButton
+            android:id="@+id/uizTIBtn_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:uiz_text_color="@color/dish_mode_text_selector"
+            app:uiz_image_src="@drawable/dish_mode_standard_selector"
+            app:uiz_text="你好啊"/>
+    </LinearLayout>
 </LinearLayout>

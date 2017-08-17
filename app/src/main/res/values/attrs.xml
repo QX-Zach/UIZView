@@ -60,4 +60,20 @@
         <attr name="bsb_always_show_bubble" format="boolean"/> <!--bubble shows all time, default: false-->
         <attr name="bsb_suffix" format="string"/> <!--后缀-->
     </declare-styleable>
+
+
+    <declare-styleable name="UIZTextImageSytle">
+        <attr name="uiz_image_bg" format="reference"/>
+        <attr name="uiz_image_src" format="reference"/>
+        <attr name="uiz_image_width" format="dimension|reference"/>
+        <attr name="uiz_image_height" format="dimension|reference"/>
+        <attr name="uiz_text_color" format="reference|color"/>
+        <attr name="uiz_text_bg_color" format="reference|color"/>
+        <attr name="uiz_text_size" format="reference|dimension"/>
+        <attr name="uiz_text_width" format="reference|dimension"/>
+        <attr name="uiz_text_height" format="reference|dimension"/>
+        <attr name="uiz_text" format="reference|string"/>
+        <attr name="uiz_space" format="reference|dimension"/><!--两个空控件间距-->
+        <attr name="uiz_textBefore" format="boolean"/>
+    </declare-styleable>
 </resources>

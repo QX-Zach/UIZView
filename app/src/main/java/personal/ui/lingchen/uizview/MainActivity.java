@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import personal.ui.lingchen.uizview.LoadingUI.SlackLoading.SlackLoadingActivity;
 import personal.ui.lingchen.uizview.UI.HexagonDrawable;
 import personal.ui.lingchen.uizview.UI.Snowflake.SnowFlokeActivity;
+import personal.ui.lingchen.uizview.UI.UIZTextImageButton;
 import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.IndicatorProgressActivity;
 import personal.ui.lingchen.uizview.UIActivity.OzerDialActivity;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnRecyleView;
     @InjectView(R.id.btn_seekBar)
     Button btnSeekBar;
+    @InjectView(R.id.uizTIBtn_test)
+    UIZTextImageButton uizTIBtnTest;
 
 
     @Override
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @OnClick({R.id.btn_indicatorProgress, R.id.btn_RecyleView, R.id.btn_oznerDial, R.id.btn_bezier,
-            R.id.btn_slackView, R.id.btn_animation,R.id.btn_snowflake,R.id.btn_seekBar})
+            R.id.btn_slackView, R.id.btn_animation, R.id.btn_snowflake, R.id.btn_seekBar})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -107,4 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @OnClick(R.id.uizTIBtn_test)
+    public void onViewClicked() {
+        uizTIBtnTest.setSelected(!uizTIBtnTest.isSelected());
+    }
 }
