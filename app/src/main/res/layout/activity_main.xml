@@ -118,5 +118,10 @@
             app:uiz_text_color="@color/dish_mode_text_selector"
             app:uiz_image_src="@drawable/dish_mode_standard_selector"
             app:uiz_text="你好啊"/>
+
+
+        <personal.ui.lingchen.uizview.UI.UIZTimeRemain
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>
