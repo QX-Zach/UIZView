@@ -76,4 +76,19 @@
         <attr name="uiz_space" format="reference|dimension"/><!--两个空控件间距-->
         <attr name="uiz_textBefore" format="boolean"/>
     </declare-styleable>
+
+
+    <declare-styleable name="UIZTimeRemainStyle">
+        <attr name="uiz_out_circleColor" format="color|reference"/>
+        <attr name="uiz_middle_circleColor" format="color|reference"/>
+        <attr name="uiz_in_circleColor" format="color|reference"/>
+        <attr name="uiz_titleColor" format="color|reference"/>
+        <attr name="uiz_valueColor" format="color|reference"/>
+        <attr name="uiz_unitColor" format="color|reference"/>
+        <attr name="uiz_unit" format="string|reference"/>
+        <attr name="uiz_title" format="string|reference"/>
+        <attr name="uiz_line_bgColor" format="color|reference"/>
+        <attr name="uiz_line_processColor" format="color|reference"/>
+        <attr name="uiz_lineWidth" format="dimension|reference"/>
+    </declare-styleable>
 </resources>

@@ -115,13 +115,38 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            app:uiz_text_color="@color/dish_mode_text_selector"
             app:uiz_image_src="@drawable/dish_mode_standard_selector"
-            app:uiz_text="你好啊"/>
+            app:uiz_text="你好啊"
+            app:uiz_text_color="@color/dish_mode_text_selector"/>
 
 
         <personal.ui.lingchen.uizview.UI.UIZTimeRemain
+            android:id="@+id/uiz_timeRemain"
+            app:uiz_line_processColor="@color/lime"
+            app:uiz_out_circleColor="@color/air_soso_bg"
+            app:uiz_titleColor="@color/green"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="增加"/>
+
+        <Button
+            android:id="@+id/btn_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="减少"/>
+
     </LinearLayout>
 </LinearLayout>

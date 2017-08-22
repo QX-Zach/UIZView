@@ -19,6 +19,7 @@ import personal.ui.lingchen.uizview.LoadingUI.SlackLoading.SlackLoadingActivity;
 import personal.ui.lingchen.uizview.UI.HexagonDrawable;
 import personal.ui.lingchen.uizview.UI.Snowflake.SnowFlokeActivity;
 import personal.ui.lingchen.uizview.UI.UIZTextImageButton;
+import personal.ui.lingchen.uizview.UI.UIZTimeRemain;
 import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.IndicatorProgressActivity;
 import personal.ui.lingchen.uizview.UIActivity.OzerDialActivity;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnSeekBar;
     @InjectView(R.id.uizTIBtn_test)
     UIZTextImageButton uizTIBtnTest;
+    @InjectView(R.id.uiz_timeRemain)
+    UIZTimeRemain uizTimeRemain;
 
 
     @Override
@@ -109,9 +112,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         swing.start();
 
     }
+//
+//    @OnClick(R.id.uizTIBtn_test)
+//    public void onViewClicked() {
+//        uizTIBtnTest.setSelected(!uizTIBtnTest.isSelected());
+//    }
 
-    @OnClick(R.id.uizTIBtn_test)
-    public void onViewClicked() {
-        uizTIBtnTest.setSelected(!uizTIBtnTest.isSelected());
+    int currentProcess = 0;
+
+    @OnClick({R.id.btn_add, R.id.btn_minus, R.id.uizTIBtn_test})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_add:
+                if (currentProcess < 100) {
+                    currentProcess += 10;
+                }
+                uizTimeRemain.setValue(currentProcess);
+                break;
+            case R.id.btn_minus:
+                if (currentProcess > 0) {
+                    currentProcess -= 10;
+                }
+                uizTimeRemain.setValue(currentProcess);
+                break;
+            case R.id.uizTIBtn_test:
+                uizTIBtnTest.setSelected(!uizTIBtnTest.isSelected());
+                break;
+        }
     }
 }
