@@ -23,6 +23,7 @@ import personal.ui.lingchen.uizview.UI.UIZTimeRemain;
 import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.IndicatorProgressActivity;
 import personal.ui.lingchen.uizview.UIActivity.OzerDialActivity;
+import personal.ui.lingchen.uizview.UIActivity.OznerTempDialActivity;
 import personal.ui.lingchen.uizview.UIActivity.RecyleViewActivity;
 import personal.ui.lingchen.uizview.UIActivity.SeekBarActivity;
 
@@ -65,10 +66,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hexagonDrawable2.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.meizi1));
         ivHex2.setImageDrawable(hexagonDrawable2);
 
+        uizTimeRemain.setProcessMax(1440);
+
     }
 
     @OnClick({R.id.btn_indicatorProgress, R.id.btn_RecyleView, R.id.btn_oznerDial, R.id.btn_bezier,
-            R.id.btn_slackView, R.id.btn_animation, R.id.btn_snowflake, R.id.btn_seekBar})
+            R.id.btn_slackView, R.id.btn_animation, R.id.btn_snowflake, R.id.btn_seekBar, R.id.btn_tempDial})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -95,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_seekBar:
                 startActivity(new Intent(MainActivity.this, SeekBarActivity.class));
+                break;
+            case R.id.btn_tempDial:
+                startActivity(new Intent(MainActivity.this, OznerTempDialActivity.class));
                 break;
 
         }
@@ -124,16 +130,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_add:
-                if (currentProcess < 100) {
-                    currentProcess += 10;
+                if (currentProcess < 1440) {
+                    currentProcess += 20;
                 }
-                uizTimeRemain.setValue(currentProcess);
+                uizTimeRemain.setRemainTime(currentProcess / 60, currentProcess % 60);
                 break;
             case R.id.btn_minus:
                 if (currentProcess > 0) {
-                    currentProcess -= 10;
+                    currentProcess -= 20;
                 }
-                uizTimeRemain.setValue(currentProcess);
+                uizTimeRemain.setRemainTime(currentProcess / 60, currentProcess % 60);
                 break;
             case R.id.uizTIBtn_test:
                 uizTIBtnTest.setSelected(!uizTIBtnTest.isSelected());

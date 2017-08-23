@@ -167,4 +167,5 @@
     <color name="dish_mode_selected">#ff5bf2ff</color>
     <color name="dish_text_unselected">#ffbebebe</color>
     <color name="dish_control_selected">#ff5a73f3</color>
+    <color name="afda">#ff0df614</color>
 </resources>

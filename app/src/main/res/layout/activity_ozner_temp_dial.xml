@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/dimgray"
+    android:padding="10dp"
+    tools:context="personal.ui.lingchen.uizview.UIActivity.OznerTempDialActivity">
+
+    <personal.ui.lingchen.uizview.UI.UIZOznerTempDial
+        android:id="@+id/uiz_OznerTempDial"
+        app:uiz_temp_dial_title = "当前温度"
+        android:layout_width="200dp"
+        android:layout_height="200dp"/>
+
+    <Button
+        android:text="增加"
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="减少"
+        android:id="@+id/btn_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -85,10 +85,13 @@
         <attr name="uiz_titleColor" format="color|reference"/>
         <attr name="uiz_valueColor" format="color|reference"/>
         <attr name="uiz_unitColor" format="color|reference"/>
-        <attr name="uiz_unit" format="string|reference"/>
         <attr name="uiz_title" format="string|reference"/>
         <attr name="uiz_line_bgColor" format="color|reference"/>
         <attr name="uiz_line_processColor" format="color|reference"/>
         <attr name="uiz_lineWidth" format="dimension|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="UIZOznerTempDialStyle">
+        <attr name="uiz_temp_dial_title" format="string|reference"/>
     </declare-styleable>
 </resources>

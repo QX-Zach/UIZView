@@ -34,11 +34,12 @@ public class UIZTimeRemain extends UIZBaseView {
     private Paint titlePaint, unitPaint;
     private float outCirlceRadius, middleCircleRadius, inCircleRadius;
     private float centerX, centerY;
-    private String title, unit;
-    private int titleWidth, titleHeight, unitWidth, unitHeight, valueWidth, valueHeight;
+    private String title;//, unit;
+    private int titleWidth, titleHeight, unitHourWidth, unitMinuteWidth, unitHeight, valueWidth, valueHeight;
 
     private int targetProcess = 0;
-    private int targetValue = 0;
+    private int remainHour = 0;
+    private int remainMinute = 0;
 
     private int processMax = 100;
 
@@ -60,7 +61,6 @@ public class UIZTimeRemain extends UIZBaseView {
         unitColor = typedArray.getColor(R.styleable.UIZTimeRemainStyle_uiz_unitColor, 0xff999999);
         lineWidth = typedArray.getDimension(R.styleable.UIZTextImageSytle_uiz_text_width, 3);
         title = typedArray.getString(R.styleable.UIZTimeRemainStyle_uiz_title);
-        unit = typedArray.getString(R.styleable.UIZTimeRemainStyle_uiz_unit);
         titleSize = dpToPx(PAINT_TITLE_SIZE);
         unitSize = dpToPx(PAINT_UNIT_SIZE);
         valueSize = dpToPx(PAINT_VALUE_SIZE);
@@ -82,19 +82,16 @@ public class UIZTimeRemain extends UIZBaseView {
         if (title == null || title.isEmpty()) {
             title = "预计剩余时间";
         }
-        if (unit == null || unit.isEmpty()) {
-            unit = "min";
-        }
 
         titlePaint.setTextSize(titleSize);
         titleWidth = getStringWidth(titlePaint, title);
         titleHeight = getFontHeight(titlePaint);
         unitPaint.setTextSize(unitSize);
-        unitWidth = getStringWidth(unitPaint, unit);
         unitHeight = getFontHeight(unitPaint);
+        unitMinuteWidth = getStringWidth(unitPaint, "min");
         textPaint.setTextSize(valueSize);
 
-        targetProcess = targetValue * 100 / processMax;
+        targetProcess = (remainHour * 60 + remainMinute) * 100 / processMax;
     }
 
     private void initPaint() {
@@ -187,8 +184,7 @@ public class UIZTimeRemain extends UIZBaseView {
         }
     }
 
-    private void changeTextSize(){
-        //绘制标题
+    private void changeTextSize() {
         //标题宽度大于内圆直径的0.8倍,缩小字号
         while (titleWidth > outCirlceRadius * 0.9f) {
             titleSize--;
@@ -204,32 +200,20 @@ public class UIZTimeRemain extends UIZBaseView {
         }
 
 
-        //绘制单位
-        while (unitWidth < outCirlceRadius * 0.15f) {
+        while (unitMinuteWidth < outCirlceRadius * 0.15f) {
             unitSize++;
             unitPaint.setTextSize(unitSize);
-            unitWidth = getStringWidth(unitPaint, unit);
+            unitMinuteWidth = getStringWidth(unitPaint, "min");
             unitHeight = getFontHeight(unitPaint);
         }
 
-        while (unitWidth > outCirlceRadius * 0.2f) {
+        while (unitMinuteWidth > outCirlceRadius * 0.2f) {
             unitSize--;
             unitPaint.setTextSize(unitSize);
-            unitWidth = getStringWidth(unitPaint, unit);
+            unitMinuteWidth = getStringWidth(unitPaint, "min");
             unitHeight = getFontHeight(unitPaint);
         }
-
-
-        float tempWidth = getStringWidth(textPaint, "100");
-        valueHeight = getFontHeight(textPaint);
-        while (tempWidth > inCircleRadius * 1.2f || valueHeight > inCircleRadius * 1.1f) {
-            valueSize--;
-            textPaint.setTextSize(valueSize);
-            tempWidth = getStringWidth(textPaint, "100");
-            valueHeight = getFontHeight(textPaint);
-        }
-
-
+        unitHourWidth = getStringWidth(unitPaint, "h");
     }
 
     /**
@@ -237,46 +221,48 @@ public class UIZTimeRemain extends UIZBaseView {
      *
      * @param canvas
      */
-    private void drawStaticText(Canvas canvas) {
-//        //绘制标题
-//        //标题宽度大于内圆直径的0.8倍,缩小字号
-//        while (titleWidth > outCirlceRadius * 0.9f) {
-//            titleSize--;
-//            titlePaint.setTextSize(titleSize);
-//            titleWidth = getStringWidth(titlePaint, title);
-//            titleHeight = getFontHeight(titlePaint);
-//        }
-//        while (titleWidth < outCirlceRadius * 0.8f) {
-//            titleSize++;
-//            titlePaint.setTextSize(titleSize);
-//            titleWidth = getStringWidth(titlePaint, title);
-//            titleHeight = getFontHeight(titlePaint);
-//        }
+    private void drawText(Canvas canvas) {
 
         titlePaint.setColor(titleColor);
         float titleLetf = centerX - titleWidth / 2;
         float titleTop = centerY - titleHeight;
         canvas.drawText(title, titleLetf, titleTop, titlePaint);
 
-//        //绘制单位
-//        while (unitWidth < outCirlceRadius * 0.15f) {
-//            unitSize++;
-//            unitPaint.setTextSize(unitSize);
-//            unitWidth = getStringWidth(unitPaint, unit);
-//            unitHeight = getFontHeight(unitPaint);
-//        }
-//
-//        while (unitWidth > outCirlceRadius * 0.2f) {
-//            unitSize--;
-//            unitPaint.setTextSize(unitSize);
-//            unitWidth = getStringWidth(unitPaint, unit);
-//            unitHeight = getFontHeight(unitPaint);
-//        }
+        float hourWidth = 0;
+        float minuteWidth = 0;
+        String hourStr = String.valueOf(remainHour);
+        String minuteStr = String.valueOf(remainMinute);
+        float tempValueWidth = getStringWidth(textPaint, "0000");
 
+        while (tempValueWidth + unitHourWidth + unitMinuteWidth > inCircleRadius * 1.8f) {
+            valueSize--;
+            textPaint.setTextSize(valueSize);
+            tempValueWidth = getStringWidth(textPaint, "0000");
+        }
+        if (remainHour > 0 && remainMinute < 10) {
+            minuteStr = "0" + minuteStr;
+        }
+        valueHeight = getFontHeight(textPaint);
+        minuteWidth = getStringWidth(textPaint, minuteStr);
+        hourWidth = getStringWidth(textPaint, hourStr);
+
+        float textWidth = hourWidth + minuteWidth + unitHourWidth + unitMinuteWidth + 3 * dpToPx(1);
+        float tempHourUnitWidth = 0;
+
+        textPaint.setColor(valueColor);
         unitPaint.setColor(unitColor);
-        float unitLeft = centerX + inCircleRadius * 0.75f - unitWidth;
-        float unitTop = centerY + inCircleRadius * 0.7f - unitHeight;
-        canvas.drawText(unit, unitLeft, unitTop, unitPaint);
+        if (remainHour > 0) {
+            tempHourUnitWidth = unitHourWidth;
+            //绘制小时
+            canvas.drawText(hourStr, centerX - textWidth / 2, centerY + valueHeight*0.5f, textPaint);
+            //绘制小时单位
+            canvas.drawText("h", centerX - textWidth / 2 + dpToPx(1) + hourWidth, centerY + valueHeight*0.5f, unitPaint);
+        }
+
+        canvas.drawText(minuteStr, centerX - textWidth / 2 + dpToPx(2) + hourWidth + tempHourUnitWidth,
+                        centerY + valueHeight*0.5f, textPaint);
+        canvas.drawText("min", centerX - textWidth / 2 + dpToPx(3) + hourWidth + tempHourUnitWidth + minuteWidth,
+                        centerY + valueHeight*0.5f, unitPaint);
     }
 
     /**
@@ -286,15 +272,6 @@ public class UIZTimeRemain extends UIZBaseView {
      * @param value
      */
     private void drawValueText(Canvas canvas, String value) {
-
-//        float tempWidth = getStringWidth(textPaint, "100");
-//        valueHeight = getFontHeight(textPaint);
-//        while (tempWidth > inCircleRadius * 1.2f || valueHeight > inCircleRadius * 1.1f) {
-//            valueSize--;
-//            textPaint.setTextSize(valueSize);
-//            tempWidth = getStringWidth(textPaint, "100");
-//            valueHeight = getFontHeight(textPaint);
-//        }
 
         valueWidth = getStringWidth(textPaint, value);
 
@@ -313,8 +290,8 @@ public class UIZTimeRemain extends UIZBaseView {
         super.onDraw(canvas);
         drawCircle(canvas);
         drawBgLine(canvas);
-        drawStaticText(canvas);
-        drawValueText(canvas, String.valueOf(targetValue));
+        drawText(canvas);
+//        drawValueText(canvas, String.valueOf(remainHour * 60 + remainMinute));
         drawProcessLine(canvas, targetProcess);
     }
 
@@ -322,20 +299,25 @@ public class UIZTimeRemain extends UIZBaseView {
     /**
      * 设置数据
      *
-     * @param value
+     * @param hour
+     * @param minute
      */
-    public void setValue(int value) {
-        this.targetValue = value;
-        this.targetProcess = value * 100 / processMax;
+    public void setRemainTime(int hour, int minute) {
+        if (hour < 0 || minute < 0) {
+            return;
+        }
+        this.remainHour = hour;
+        this.remainMinute = minute;
+        this.targetProcess = (remainHour * 60 + remainMinute) * 100 / processMax;
         postInvalidate();
     }
 
     /**
      * 设置进度最大值
      *
-     * @param max
+     * @param maxMinute
      */
-    public void setProcessMax(int max) {
-        this.processMax = max;
+    public void setProcessMax(int maxMinute) {
+        this.processMax = maxMinute;
     }
 }
