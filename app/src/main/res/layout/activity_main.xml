@@ -155,4 +155,12 @@
             android:text="减少"/>
 
     </LinearLayout>
+    <personal.ui.lingchen.uizview.UI.UIZTwoInfoText
+        app:uiz_left_text_value="lingchen"
+        app:uiz_left_text_size="14dp"
+        app:uiz_left_text_color="@color/cyan"
+        android:padding="15dp"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
