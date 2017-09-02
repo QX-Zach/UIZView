@@ -170,17 +170,23 @@ public class UIZTimeRemain extends UIZBaseView {
         }
     }
 
-    private void drawProcessLine(Canvas canvas, float value) {
+    private void drawProcessLine(Canvas canvas, int value) {
         linePaint.setColor(processLineColor);
         linePaint.setMaskFilter(new BlurMaskFilter(10, BlurMaskFilter.Blur.SOLID));
         if (value > 100) {
             value = 100;
         }
         float sweep = value / 100 * SWEEP_ANGLE;
+        //由于魅族M3s和Oppo等手机在sweep为0时会造成绘制完整圆圈，
+        // 故这里判断为0的情况，设置一个大于零又比较小的初值，显示效果没有明显影响
+        if (value == 0)
+            sweep = 0.01f;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            canvas.drawArc(centerX - outCirlceRadius * 0.875f, centerY - outCirlceRadius * 0.875f, centerX + outCirlceRadius * 0.875f, centerY + outCirlceRadius * 0.875f, START_ANGLE, sweep, false, linePaint);
+            canvas.drawArc(centerX - outCirlceRadius * 0.875f, centerY - outCirlceRadius * 0.875f
+                    , centerX + outCirlceRadius * 0.875f, centerY + outCirlceRadius * 0.875f, START_ANGLE, sweep, false, linePaint);
         } else {
-            canvas.drawArc(new RectF(centerX - outCirlceRadius * 0.875f, centerY - outCirlceRadius * 0.875f, centerX + outCirlceRadius * 0.875f, centerY + outCirlceRadius * 0.875f), START_ANGLE, sweep, false, linePaint);
+            canvas.drawArc(new RectF(centerX - outCirlceRadius * 0.875f, centerY - outCirlceRadius * 0.875f
+                    , centerX + outCirlceRadius * 0.875f, centerY + outCirlceRadius * 0.875f), START_ANGLE, sweep, false, linePaint);
         }
     }
 
