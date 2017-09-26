@@ -153,6 +153,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="减少"/>
+        <Button
+            android:id="@+id/btn_WarmCupUI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保温杯UI"/>
 
     </LinearLayout>
     <personal.ui.lingchen.uizview.UI.UIZTwoInfoText

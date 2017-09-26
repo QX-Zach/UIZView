@@ -32,6 +32,8 @@
         </activity>
         <activity android:name=".UIActivity.OznerTempDialActivity">
         </activity>
+        <activity android:name=".UIActivity.RealTempTestActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -94,7 +94,7 @@
     <declare-styleable name="UIZOznerTempDialStyle">
         <attr name="uiz_temp_dial_title" format="string|reference"/>
     </declare-styleable>
-    
+
     <declare-styleable name="UIZTwoInfoTextStyle">
         <attr name="uiz_left_text_size" format="dimension|reference"/>
         <attr name="uiz_left_text_color" format="color|reference"/>
@@ -102,5 +102,10 @@
         <attr name="uiz_right_text_size" format="dimension|reference"/>
         <attr name="uiz_right_text_color" format="color|reference"/>
         <attr name="uiz_right_text_value" format="string|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="UIZRealTemp">
+        <attr name="uiz_real_temp_title" format="string|reference"/>
+        <attr name="uiz_real_temp_bottom" format="string|reference"/>
     </declare-styleable>
 </resources>
