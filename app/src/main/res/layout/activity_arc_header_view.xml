@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context="personal.ui.lingchen.uizview.UIActivity.ArcHeaderViewActivity">
+
+    <!--<android.support.constraint.Guideline-->
+    <!--android:layout_width="1dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--app:layout_constraintGuide_percent="0.5"/>-->
+
+    <!--<personal.ui.lingchen.uizview.UI.ArcHeaderView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"/>-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="10dp"-->
+    <!--android:text="这个弧形headerView直接用背景图片都比自定义view简单,鸡肋"-->
+    <!--android:textColor="@color/white"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"/>-->
+
+
+    <personal.ui.lingchen.uizview.UI.UIZRippleCircle
+        android:id="@+id/uizRippleCircle"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"/>
+
+    <Button
+
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="增加"
+        app:layout_constraintTop_toBottomOf="@+id/uizRippleCircle"/>
+
+    <Button
+        app:layout_constraintLeft_toRightOf="@+id/btn_add"
+        android:id="@+id/btn_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="减少"
+        app:layout_constraintTop_toBottomOf="@+id/uizRippleCircle"/>
+
+    <Button
+        app:layout_constraintLeft_toRightOf="@+id/btn_minus"
+        android:id="@+id/btn_single"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="设置固定值"
+        app:layout_constraintTop_toBottomOf="@+id/uizRippleCircle"/>
+</android.support.constraint.ConstraintLayout>

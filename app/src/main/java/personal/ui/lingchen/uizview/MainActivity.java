@@ -20,6 +20,7 @@ import personal.ui.lingchen.uizview.UI.HexagonDrawable;
 import personal.ui.lingchen.uizview.UI.Snowflake.SnowFlokeActivity;
 import personal.ui.lingchen.uizview.UI.UIZTextImageButton;
 import personal.ui.lingchen.uizview.UI.UIZTimeRemain;
+import personal.ui.lingchen.uizview.UIActivity.ArcHeaderViewActivity;
 import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.IndicatorProgressActivity;
 import personal.ui.lingchen.uizview.UIActivity.OzerDialActivity;
@@ -72,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @OnClick({R.id.btn_indicatorProgress, R.id.btn_RecyleView, R.id.btn_oznerDial, R.id.btn_bezier,
-            R.id.btn_slackView, R.id.btn_animation, R.id.btn_snowflake, R.id.btn_seekBar, R.id.btn_tempDial, R.id.btn_WarmCupUI})
+            R.id.btn_slackView, R.id.btn_animation, R.id.btn_snowflake, R.id.btn_seekBar, R.id.btn_tempDial,
+            R.id.btn_WarmCupUI,R.id.btn_ripple_circle})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -105,6 +107,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_WarmCupUI:
                 startActivity(new Intent(MainActivity.this, RealTempTestActivity.class));
+                break;
+            case R.id.btn_ripple_circle:
+                startActivity(new Intent(MainActivity.this, ArcHeaderViewActivity.class));
                 break;
 
         }

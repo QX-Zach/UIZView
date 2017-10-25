@@ -135,6 +135,11 @@
             android:layout_height="150dp"/>
 
 
+        <Button
+            android:text="水波纹"
+            android:id="@+id/btn_ripple_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
     <LinearLayout

@@ -75,4 +75,5 @@ public abstract class UIZBaseView extends View {
         Paint.FontMetrics fm = paint.getFontMetrics();
         return (int) Math.ceil(fm.descent - fm.top) + 2;
     }
+
 }

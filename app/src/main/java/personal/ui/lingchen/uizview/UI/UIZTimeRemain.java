@@ -176,7 +176,7 @@ public class UIZTimeRemain extends UIZBaseView {
         if (value > 100) {
             value = 100;
         }
-        float sweep = value / 100 * SWEEP_ANGLE;
+        float sweep = value * SWEEP_ANGLE / 100.f;
         //由于魅族M3s和Oppo等手机在sweep为0时会造成绘制完整圆圈，
         // 故这里判断为0的情况，设置一个大于零又比较小的初值，显示效果没有明显影响
         if (value == 0)
@@ -260,32 +260,32 @@ public class UIZTimeRemain extends UIZBaseView {
         if (remainHour > 0) {
             tempHourUnitWidth = unitHourWidth;
             //绘制小时
-            canvas.drawText(hourStr, centerX - textWidth / 2, centerY + valueHeight*0.5f, textPaint);
+            canvas.drawText(hourStr, centerX - textWidth / 2, centerY + valueHeight * 0.5f, textPaint);
             //绘制小时单位
-            canvas.drawText("h", centerX - textWidth / 2 + dpToPx(1) + hourWidth, centerY + valueHeight*0.5f, unitPaint);
+            canvas.drawText("h", centerX - textWidth / 2 + dpToPx(1) + hourWidth, centerY + valueHeight * 0.5f, unitPaint);
         }
 
         canvas.drawText(minuteStr, centerX - textWidth / 2 + dpToPx(2) + hourWidth + tempHourUnitWidth,
-                        centerY + valueHeight*0.5f, textPaint);
+                        centerY + valueHeight * 0.5f, textPaint);
         canvas.drawText("min", centerX - textWidth / 2 + dpToPx(3) + hourWidth + tempHourUnitWidth + minuteWidth,
-                        centerY + valueHeight*0.5f, unitPaint);
+                        centerY + valueHeight * 0.5f, unitPaint);
     }
-
-    /**
-     * 绘制数字
-     *
-     * @param canvas
-     * @param value
-     */
-    private void drawValueText(Canvas canvas, String value) {
-
-        valueWidth = getStringWidth(textPaint, value);
-
-        textPaint.setColor(valueColor);
-        float valueLeft = centerX - valueWidth * 0.65f;
-        float valueTop = centerY + valueHeight * 0.5f;
-        canvas.drawText(value, valueLeft, valueTop, textPaint);
-    }
+//
+//    /**
+//     * 绘制数字
+//     *
+//     * @param canvas
+//     * @param value
+//     */
+//    private void drawValueText(Canvas canvas, String value) {
+//
+//        valueWidth = getStringWidth(textPaint, value);
+//
+//        textPaint.setColor(valueColor);
+//        float valueLeft = centerX - valueWidth * 0.65f;
+//        float valueTop = centerY + valueHeight * 0.5f;
+//        canvas.drawText(value, valueLeft, valueTop, textPaint);
+//    }
 
 
     /**
@@ -315,7 +315,7 @@ public class UIZTimeRemain extends UIZBaseView {
         this.remainHour = hour;
         this.remainMinute = minute;
         this.targetProcess = (remainHour * 60 + remainMinute) * 100 / processMax;
-        postInvalidate();
+        invalidate();
     }
 
     /**
