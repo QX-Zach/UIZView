@@ -22,7 +22,7 @@ import android.view.animation.LinearInterpolator;
 
 public class UIZRippleCircle extends UIZBaseView {
     private static final String TAG = "UIZRippleCircle";
-    private int animatorDuration = 6000;
+    private int animatorDuration = 4000;
     private Paint circlePaint, leftRipplePaint, rightRipplePaint, bgPaint, textPaint;
     /**
      * 字体大小
