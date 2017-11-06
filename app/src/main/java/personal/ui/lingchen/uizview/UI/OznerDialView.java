@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -18,6 +19,13 @@ public class OznerDialView extends CustomerBaseView {
     private final float LINE_WIDTH_DP = 1.5f;//线宽，单位dp，需要转成px
     private final int LINE_LENGHT_DP = 10;//线长，单位dp，需要转成px
     private final int ROTATE_STEP = 4;//两条线间隔角度
+
+    private int ROTATE_START_ANGRAL = 50;
+    private int ROTATE_LINE_SWEEP = 50;
+
+    private float ROTATE_LINE_WITTH_DP = 4f;//旋转线的线宽
+    private float rotate = 0;//旋转的角度
+    private Paint rotateLinePaint;
     private final int ANIM_DURIATION = 1200;
     private int transLineNum, lineNum;//半透明线数，总数
     private Paint linePaint;
@@ -25,7 +33,8 @@ public class OznerDialView extends CustomerBaseView {
     private int canvasWidth, canvasHeight;//画布宽和高
     private int outerRadius;//线所占半径
     private int transStep = 0;
-    private ValueAnimator rotateAnim;
+    private ValueAnimator rotateAnim, rotateLineAnima;
+    private int curRotateAngle = ROTATE_START_ANGRAL;
 
     public OznerDialView(Context context) {
         super(context);
@@ -49,6 +58,7 @@ public class OznerDialView extends CustomerBaseView {
         canvasHeight = h;
         initData();
         startRotateAnima();
+        startRotateLineAnima();
     }
 
     private void initView() {
@@ -60,6 +70,14 @@ public class OznerDialView extends CustomerBaseView {
         linePaint.setColor(COLOR_LINE_BASE);
         linePaint.setStrokeCap(Paint.Cap.ROUND);
         linePaint.setStrokeWidth(lineWidth);
+
+        rotateLinePaint = new Paint();
+        rotateLinePaint.setAntiAlias(true);
+        rotateLinePaint.setStyle(Paint.Style.STROKE);
+        rotateLinePaint.setStrokeCap(Paint.Cap.ROUND);
+        rotateLinePaint.setStrokeWidth(dp2px(getContext(), ROTATE_LINE_WITTH_DP));
+        rotateLinePaint.setColor(COLOR_LINE_BASE);
+
 
         transLineNum = 55 / ROTATE_STEP;
         lineNum = 180 / ROTATE_STEP;
@@ -140,7 +158,38 @@ public class OznerDialView extends CustomerBaseView {
             }
             drawLine(canvas, canvasWidth / 2 + outerRadius, canvasHeight, canvasWidth / 2 + outerRadius - lineLenght, canvasHeight, linePaint, i * ROTATE_STEP);
         }
+
+        drawArcLine(canvas);
     }
+
+    private void drawArcLine(Canvas canvas) {
+        canvas.drawArc(new RectF(lineLenght + dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f
+                , lineLenght + dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f
+                , canvasWidth - lineLenght - dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f
+                , canvasWidth - lineLenght - dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f), curRotateAngle, ROTATE_LINE_SWEEP, false, rotateLinePaint);
+        canvas.drawArc(new RectF(lineLenght + dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f
+                , lineLenght + dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f
+                , canvasWidth - lineLenght - dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f
+                , canvasWidth - lineLenght - dp2px(getContext(), ROTATE_LINE_WITTH_DP) * 1.5f), -180 - ROTATE_LINE_SWEEP - curRotateAngle, ROTATE_LINE_SWEEP, false, rotateLinePaint);
+
+    }
+
+    private void startRotateLineAnima() {
+        if (rotateLineAnima == null) {
+            rotateLineAnima = ValueAnimator.ofInt(ROTATE_START_ANGRAL, ROTATE_START_ANGRAL - 360 + ROTATE_LINE_SWEEP);
+            rotateLineAnima.setDuration(ANIM_DURIATION * 2);
+            rotateLineAnima.setRepeatCount(Animation.INFINITE);
+            rotateLineAnima.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    curRotateAngle = (int) animation.getAnimatedValue();
+                    invalidate();
+                }
+            });
+        }
+        rotateLineAnima.start();
+    }
+
 
     private void startRotateAnima() {
         if (rotateAnim == null) {
@@ -166,6 +215,11 @@ public class OznerDialView extends CustomerBaseView {
         if (rotateAnim != null) {
             rotateAnim.cancel();
             rotateAnim = null;
+        }
+
+        if (rotateLineAnima != null) {
+            rotateLineAnima.cancel();
+            rotateLineAnima = null;
         }
     }
 }
