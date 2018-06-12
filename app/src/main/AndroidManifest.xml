@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="personal.ui.lingchen.uizview">
 
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.autofocus"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -36,20 +42,9 @@
         </activity>
         <activity android:name=".UIActivity.ArcHeaderViewActivity">
         </activity>
-        <!-- This service is only used on devices with API v17+ -->
-        <activity
-            android:name=".UIActivity.ItemListActivity"
-            android:label="@string/title_item_list"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".UIActivity.CameraTestActivity">
         </activity>
-        <activity
-            android:name=".UIActivity.ItemDetailActivity"
-            android:label="@string/title_item_detail"
-            android:parentActivityName=".UIActivity.ItemListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="personal.ui.lingchen.uizview.UIActivity.ItemListActivity"/>
+        <activity android:name=".UIActivity.GradientTestActivity">
         </activity>
     </application>
 

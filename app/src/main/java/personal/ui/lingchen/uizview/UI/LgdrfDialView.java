@@ -18,6 +18,8 @@ import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by ozner_67 on 2017/5/27.
  * 邮箱：xinde.zhang@cftcn.com
@@ -35,7 +37,7 @@ public class LgdrfDialView extends CustomerBaseView {
     private final int START_ROTATE = -10;//起始角度
     private final int END_ROTATE = 200;//结束角度
     private int lineNum = 20;
-    private final float LINE_WIDTH = 15f;//单位dp
+    private final float LINE_WIDTH = 7f;//单位dp
     float lineLenght = 3.0f;//线长，单位dp
     float radius;//刻度盘最外侧半径值
     private Paint linePaint;//刻度画笔
@@ -44,29 +46,31 @@ public class LgdrfDialView extends CustomerBaseView {
     private PointF center;//圆心
     Shader shader;
     private int curLineNum = 0;
+    private WeakReference<Context> mContext;
 
     private ValueAnimator rotateAnim;
 
 
     public LgdrfDialView(Context context) {
         super(context);
-        init();
+        init(context);
     }
 
     public LgdrfDialView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context);
     }
 
     public LgdrfDialView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context);
     }
 
-    private void init() {
+    private void init(Context context) {
+        this.mContext = new WeakReference<Context>(context);
         linePaint = new Paint();
         linePaint.setAntiAlias(true);
-        linePaint.setStrokeWidth(LINE_WIDTH);
+        linePaint.setStrokeWidth(dp2px(mContext.get(), LINE_WIDTH));
         linePaint.setStyle(Paint.Style.STROKE);
         linePaint.setStrokeCap(Paint.Cap.ROUND);
         shaderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

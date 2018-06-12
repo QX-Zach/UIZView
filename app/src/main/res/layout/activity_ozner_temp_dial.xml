@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/dimgray"
+    android:background="@color/aquamarine"
     android:padding="10dp"
     tools:context="personal.ui.lingchen.uizview.UIActivity.OznerTempDialActivity">
 
@@ -26,4 +26,9 @@
         android:id="@+id/btn_minus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <personal.ui.lingchen.uizview.UI.SignalView
+        android:id="@+id/svSingal"
+        android:layout_width="30dp"
+        android:layout_height="25dp"/>
 </LinearLayout>

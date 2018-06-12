@@ -1,14 +1,20 @@
-package personal.ui.lingchen.uizview.UI;
+package personal.ui.lingchen.uizview.UI.OznerAirDial;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+
+import java.util.Random;
+
+import personal.ui.lingchen.uizview.UI.CustomerBaseView;
 
 /**
  * Created by ozner_67 on 2016/9/9.
@@ -111,15 +117,6 @@ public class OznerDialView extends CustomerBaseView {
         } else {
             width = defalutWidth;
         }
-//        if (heightMode == MeasureSpec.EXACTLY) {
-//            height = heightSize;
-//        } else if (heightMode == MeasureSpec.AT_MOST) {
-//            height = Math.min(defaultHeight, heightSize);
-//        } else if (heightMode == MeasureSpec.UNSPECIFIED) {
-//            height = defaultHeight;
-//        } else {
-//            height = defaultHeight;
-//        }
 
         height = width / 2;
 
@@ -150,6 +147,8 @@ public class OznerDialView extends CustomerBaseView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+//        Path path = new Path();
+//        path.in
         for (int i = 1; i < lineNum; i++) {
             if (i < transStep + transLineNum / 2 && i > transStep - transLineNum / 2) {
                 linePaint.setColor(getTransColor(i));
@@ -220,6 +219,97 @@ public class OznerDialView extends CustomerBaseView {
         if (rotateLineAnima != null) {
             rotateLineAnima.cancel();
             rotateLineAnima = null;
+        }
+    }
+
+
+//    class SnowFacotory{
+//        public static Snow Create(Rect rect, Paint tpaint){
+//            int x = (int) sRandom.getRandom(rect.left, rect.right);
+//            int y = (int) sRandom.getRandom(rect.top, rect.bottom);
+//            Point p = new Point(x, y);
+//            float angle = sRandom.getRandom(ANGLE_SEED) / ANGLE_SEED * ANGLE_RANGE + HALF_PI - HALF_ANGLE_RANGE;
+//            float increment = sRandom.getRandom(INCREMENT_LOWER, INCREMENT_UPPER);
+//            float size = sRandom.getRandom(FLAKE_SIZE_LOWER, FLAKE_SIZE_UPPER);
+////            return new Snow(p, size, angle,increment,tpaint);
+//            return new Snow();
+//        }
+//    }
+
+    static class Snow {
+
+        private static final RandomGenerator sRandom = new RandomGenerator();
+        private static final float ANGLE_RANGE = 0.1f;
+        private static final float HALF_ANGLE_RANGE = ANGLE_RANGE / 2f; // 一半的角度
+        private static final float ANGLE_DIVISOR = 10000f; // 角度的分母
+        private static final float HALF_PI = (float) Math.PI / 2f; // 半PI
+        private static final float ANGLE_SEED = 25f; // 角度随机种子
+        //移动速度上下限
+        private static final float INCREMENT_LOWER = 2F;
+        private static final float INCREMENT_UPPER = 4F;
+        // 雪花的大小
+        private static final float FLAKE_SIZE_LOWER = 1f;
+        private static final float FLAKE_SIZE_UPPER = 6f;
+
+        //雪花半径
+        private float snowRadius;
+        //雪花位置
+        private Point sPos;
+        //雪花画笔
+        private Paint sPaint;
+        //雪花移动角度
+        private float sAngle;
+        //雪花移动速度
+        private float sIncrement;
+//        private Snow(){
+//
+//        }
+
+        public void Snow(Point pos, float radius, float angle, float inscrement, Paint paint) {
+            snowRadius = radius;
+            sPos = pos;
+            sAngle = angle;
+            sIncrement = inscrement;
+            sPaint = paint;
+        }
+
+        public static Snow create(Rect rect, Paint tpaint) {
+            int x = (int) sRandom.getRandom(rect.left, rect.right);
+            int y = (int) sRandom.getRandom(rect.top, rect.bottom);
+            Point p = new Point(x, y);
+            float angle = sRandom.getRandom(ANGLE_SEED) / ANGLE_SEED * ANGLE_RANGE + HALF_PI - HALF_ANGLE_RANGE;
+            float increment = sRandom.getRandom(INCREMENT_LOWER, INCREMENT_UPPER);
+            float size = sRandom.getRandom(FLAKE_SIZE_LOWER, FLAKE_SIZE_UPPER);
+//            return new Snow(p, size, angle,increment,tpaint);
+            return new Snow();
+        }
+
+    }
+
+
+    /**
+     * 随机生成器
+     * <p/>
+     * Created by wangchenlong on 16/1/24.
+     */
+    public static class RandomGenerator {
+        private static final Random RANDOM = new Random();
+
+        // 区间随机
+        public float getRandom(float lower, float upper) {
+            float min = Math.min(lower, upper);
+            float max = Math.max(lower, upper);
+            return getRandom(max - min) + min;
+        }
+
+        // 上界随机
+        public float getRandom(float upper) {
+            return RANDOM.nextFloat() * upper;
+        }
+
+        // 上界随机
+        public int getRandom(int upper) {
+            return RANDOM.nextInt(upper);
         }
     }
 }

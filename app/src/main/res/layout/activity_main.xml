@@ -36,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="加载动画"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -80,6 +81,7 @@
             android:layout_height="wrap_content"
             android:text="SeekBar"
             android:textAllCaps="false"/>
+
         <Button
             android:id="@+id/btn_tempDial"
             android:layout_width="wrap_content"
@@ -128,20 +130,36 @@
 
         <personal.ui.lingchen.uizview.UI.UIZTimeRemain
             android:id="@+id/uiz_timeRemain"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             app:uiz_line_processColor="@color/lime"
             app:uiz_out_circleColor="@color/air_soso_bg"
-            app:uiz_titleColor="@color/green"
-            android:layout_width="150dp"
-            android:layout_height="150dp"/>
+            app:uiz_titleColor="@color/green"/>
 
-
-        <Button
-            android:text="水波纹"
-            android:id="@+id/btn_ripple_circle"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_ripple_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水波纹"/>
+            <Button
+                android:text="开启灯光"
+                android:id="@+id/btn_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="渐变色测试"
+                android:id="@+id/btnGradient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -158,6 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="减少"/>
+
         <Button
             android:id="@+id/btn_WarmCupUI"
             android:layout_width="wrap_content"
@@ -165,12 +184,13 @@
             android:text="保温杯UI"/>
 
     </LinearLayout>
+
     <personal.ui.lingchen.uizview.UI.UIZTwoInfoText
-        app:uiz_left_text_value="lingchen"
-        app:uiz_left_text_size="14dp"
-        app:uiz_left_text_color="@color/cyan"
-        android:padding="15dp"
-        android:background="@color/colorAccent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:padding="15dp"
+        app:uiz_left_text_color="@color/cyan"
+        app:uiz_left_text_size="14dp"
+        app:uiz_left_text_value="lingchen"/>
 </LinearLayout>
