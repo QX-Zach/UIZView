@@ -22,7 +22,7 @@ import android.widget.LinearLayout;
 import java.util.UUID;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 import personal.ui.lingchen.uizview.LoadingUI.SlackLoading.SlackLoadingActivity;
 import personal.ui.lingchen.uizview.UI.HexagonDrawable;
@@ -45,33 +45,33 @@ import personal.ui.lingchen.uizview.Utils.WPTempColorUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
-    @InjectView(R.id.btn_indicatorProgress)
+    @BindView(R.id.btn_indicatorProgress)
     Button btnIndicatorProgress;
-    @InjectView(R.id.btn_animation)
+    @BindView(R.id.btn_animation)
     Button btnAnimation;
-    @InjectView(R.id.llay_btn_root)
+    @BindView(R.id.llay_btn_root)
     LinearLayout llayBtnRoot;
-    @InjectView(R.id.btn_slackView)
+    @BindView(R.id.btn_slackView)
     Button btnSlackView;
-    @InjectView(R.id.btn_bezier)
+    @BindView(R.id.btn_bezier)
     Button btnBezier;
-    @InjectView(R.id.btn_oznerDial)
+    @BindView(R.id.btn_oznerDial)
     Button btnOznerDial;
-    @InjectView(R.id.iv_hex)
+    @BindView(R.id.iv_hex)
     ImageView ivHex;
-    @InjectView(R.id.iv_hex2)
+    @BindView(R.id.iv_hex2)
     ImageView ivHex2;
-    @InjectView(R.id.btn_RecyleView)
+    @BindView(R.id.btn_RecyleView)
     Button btnRecyleView;
-    @InjectView(R.id.btn_seekBar)
+    @BindView(R.id.btn_seekBar)
     Button btnSeekBar;
-    @InjectView(R.id.uizTIBtn_test)
+    @BindView(R.id.uizTIBtn_test)
     UIZTextImageButton uizTIBtnTest;
-    @InjectView(R.id.uiz_timeRemain)
+    @BindView(R.id.uiz_timeRemain)
     UIZTimeRemain uizTimeRemain;
-    @InjectView(R.id.btn_light)
+    @BindView(R.id.btn_light)
     Button btnLight;
-    @InjectView(R.id.btnGradient)
+    @BindView(R.id.btnGradient)
     Button btnGradient;
 
     private boolean isLightOn = false;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         HexagonDrawable hexagonDrawable = new HexagonDrawable();
         hexagonDrawable.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.meizi5));
         ivHex.setImageDrawable(hexagonDrawable);

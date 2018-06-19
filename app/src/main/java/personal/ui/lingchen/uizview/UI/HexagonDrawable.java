@@ -13,13 +13,7 @@ import android.graphics.Rect;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
-
-import personal.ui.lingchen.uizview.R;
-import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity$$ViewInjector;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by ozner_67 on 2016/10/8.

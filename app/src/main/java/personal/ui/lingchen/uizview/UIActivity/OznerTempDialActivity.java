@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 import personal.ui.lingchen.uizview.R;
 import personal.ui.lingchen.uizview.UI.SignalView;
@@ -13,16 +13,16 @@ import personal.ui.lingchen.uizview.UI.UIZOznerTempDial;
 
 public class OznerTempDialActivity extends AppCompatActivity {
 
-    @InjectView(R.id.uiz_OznerTempDial)
+    @BindView(R.id.uiz_OznerTempDial)
     UIZOznerTempDial uizOznerTempDial;
-    @InjectView(R.id.svSingal)
+    @BindView(R.id.svSingal)
     SignalView svSingal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ozner_temp_dial);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
     }
 

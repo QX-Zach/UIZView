@@ -5,21 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 import personal.ui.lingchen.uizview.R;
 import personal.ui.lingchen.uizview.UI.UIZRealTemp;
 
 public class RealTempTestActivity extends AppCompatActivity {
 
-    @InjectView(R.id.uizRealtemp)
+    @BindView(R.id.uizRealtemp)
     UIZRealTemp uizRealtemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_temp_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     int precent = 0;

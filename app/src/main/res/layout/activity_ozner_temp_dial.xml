@@ -31,4 +31,8 @@
         android:id="@+id/svSingal"
         android:layout_width="30dp"
         android:layout_height="25dp"/>
+
+    <personal.ui.lingchen.uizview.UI.SlideAdjustView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></personal.ui.lingchen.uizview.UI.SlideAdjustView>
 </LinearLayout>

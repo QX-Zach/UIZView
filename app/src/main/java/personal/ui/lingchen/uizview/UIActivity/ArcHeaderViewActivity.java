@@ -5,14 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 import personal.ui.lingchen.uizview.R;
 import personal.ui.lingchen.uizview.UI.UIZRippleCircle;
 
 public class ArcHeaderViewActivity extends AppCompatActivity {
 
-    @InjectView(R.id.uizRippleCircle)
+    @BindView(R.id.uizRippleCircle)
     UIZRippleCircle uizRippleCircle;
 
     private float value = 0;
@@ -21,7 +21,7 @@ public class ArcHeaderViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arc_header_view);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 //        getActionBar().setTitle("弧形HeaderView");
     }
 

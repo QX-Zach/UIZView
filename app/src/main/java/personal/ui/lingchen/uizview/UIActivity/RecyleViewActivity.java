@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import personal.ui.lingchen.uizview.R;
 import personal.ui.lingchen.uizview.UI.RecyleViewTest.DividerItemDecoration;
 
@@ -23,9 +23,9 @@ import personal.ui.lingchen.uizview.UI.RecyleViewTest.DividerItemDecoration;
  */
 public class RecyleViewActivity extends AppCompatActivity {
 
-    @InjectView(R.id.tv_bottom)
+    @BindView(R.id.tv_bottom)
     TextView tvBottom;
-    @InjectView(R.id.rv_list)
+    @BindView(R.id.rv_list)
     RecyclerView rvList;
     private RecyleAdapter mAdapter;
     private List<String> mDatas;
@@ -34,7 +34,7 @@ public class RecyleViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyle_view);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         initData();
         rvList.setLayoutManager(new LinearLayoutManager(this));
         rvList.setAdapter(mAdapter = new RecyleAdapter());

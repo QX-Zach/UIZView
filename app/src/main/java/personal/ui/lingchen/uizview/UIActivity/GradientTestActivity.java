@@ -12,20 +12,20 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import personal.ui.lingchen.uizview.R;
 import personal.ui.lingchen.uizview.UI.UIZTempDial;
 import personal.ui.lingchen.uizview.Utils.OznerColorUtils;
 
 public class GradientTestActivity extends AppCompatActivity {
 
-    @InjectView(R.id.gtvTest)
+    @BindView(R.id.gtvTest)
     GradientTestView gtvTest;
-    @InjectView(R.id.pbProgress)
+    @BindView(R.id.pbProgress)
     SeekBar pbProgress;
-    @InjectView(R.id.tvColorPre)
+    @BindView(R.id.tvColorPre)
     TextView tvColorPre;
-    @InjectView(R.id.uizTempDial)
+    @BindView(R.id.uizTempDial)
     UIZTempDial uizTempDial;
 
     private static final int FIRST_COLOR = 0xff415cec;
@@ -36,7 +36,7 @@ public class GradientTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gradient_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         pbProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

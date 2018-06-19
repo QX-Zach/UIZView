@@ -6,25 +6,25 @@ import android.view.View;
 import android.widget.Button;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 import personal.ui.lingchen.uizview.R;
 import personal.ui.lingchen.uizview.UI.BezierTestView;
 
 public class BezierTestActivity extends AppCompatActivity {
 
-    @InjectView(R.id.bezier_view)
+    @BindView(R.id.bezier_view)
     BezierTestView bezierView;
-    @InjectView(R.id.btn_satart)
+    @BindView(R.id.btn_satart)
     Button btnSatart;
-    @InjectView(R.id.btn_stop)
+    @BindView(R.id.btn_stop)
     Button btnStop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bezier_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.btn_satart, R.id.btn_stop})
