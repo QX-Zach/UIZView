@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/aquamarine"
+    android:orientation="vertical"
     android:padding="10dp"
     tools:context="personal.ui.lingchen.uizview.UIActivity.OznerTempDialActivity">
 
     <personal.ui.lingchen.uizview.UI.UIZOznerTempDial
         android:id="@+id/uiz_OznerTempDial"
-        app:uiz_temp_dial_title = "当前温度"
         android:layout_width="200dp"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        app:uiz_temp_dial_title="当前温度" />
 
-    <Button
-        android:text="增加"
-        android:id="@+id/btn_add"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:text="减少"
-        android:id="@+id/btn_minus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="增加" />
+
+        <Button
+            android:id="@+id/btn_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="减少" />
+
+        <TextView
+            android:id="@+id/tvSildeResult"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <personal.ui.lingchen.uizview.UI.SignalView
         android:id="@+id/svSingal"
         android:layout_width="30dp"
-        android:layout_height="25dp"/>
+        android:layout_height="25dp" />
 
     <personal.ui.lingchen.uizview.UI.SlideAdjustView
+        android:id="@+id/sav_adjust"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></personal.ui.lingchen.uizview.UI.SlideAdjustView>
 </LinearLayout>
