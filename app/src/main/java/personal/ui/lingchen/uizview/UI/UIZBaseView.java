@@ -47,18 +47,20 @@ public abstract class UIZBaseView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        int width = MeasureSpec.getSize(widthMeasureSpec);
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int height = MeasureSpec.getSize(heightMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-
-        if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(defalutSize, defalutSize);
-        } else if (widthMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(defalutSize, height);
-        } else if (heightMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(width, defalutSize);
-        }
+//        int width = MeasureSpec.getSize(widthMeasureSpec);
+//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+//        int height = MeasureSpec.getSize(heightMeasureSpec);
+//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+//
+//        if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
+//            setMeasuredDimension(defalutSize, 100);
+//        } else if (widthMode == MeasureSpec.AT_MOST) {
+//            setMeasuredDimension(defalutSize, height);
+//        } else if (heightMode == MeasureSpec.AT_MOST) {
+//            setMeasuredDimension(width, width*2/3);
+//        }else if(widthMode == MeasureSpec.EXACTLY){
+//            setMeasuredDimension(width, width*2/3);
+//        }
     }
 
     protected int dpToPx(float dp) {

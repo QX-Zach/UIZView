@@ -116,6 +116,14 @@
         <attr name="uiztemp_dial_value_max" format="reference|integer"/>
     </declare-styleable>
 
+    <declare-styleable name="PillarView">
+        <attr name="uiz_value" format="integer"/>
+        <attr name="uiz_background_color" format="color|reference"/>
+        <attr name="uiz_front_color" format="color|reference"/>
+        <attr name="uiz_bound_color" format="color|reference"/>
+        <attr name="uiz_show_bound" format="boolean"/>
+    </declare-styleable>
+
     <declare-styleable name="MarqueeView">
         <attr name="marqueeview_repet_type" format="enum">
             <enum name="repet_oncetime" value="0"/><!-- 播放一次 -->

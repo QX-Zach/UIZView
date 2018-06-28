@@ -17,7 +17,9 @@ import android.graphics.Shader;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import java.util.ArrayList;
@@ -31,23 +33,21 @@ import java.util.ArrayList;
  * <p>
  * 描述:
  */
-public class SlideAdjustView extends UIZBaseView {
+public class SlideAdjustView extends View {
     private static final String TAG = "SlideAdjustView";
+    protected int mWidth, mHeight;
     private Paint bgPaint;//背景线画笔
-    //    private Paint fontPaint;//大背景画笔
     private Paint dashPaint;//虚线画笔
     private Paint textPaint;//文本画笔
     private Paint numPaint;//数字画笔
     private Paint thumbPaint;//滑块画笔,大背景画笔
     private Paint thumbLinePaint;
 
-    private int numColor = 0xff5ecffe;//数字颜色
-    private int textColor = 0xff5ecffe;//文本颜色
-    private int thumColor = 0xff3b71df;//滑块颜色
-    private int dashLineColor = 0xff3b71df;//虚线颜色
+    private int numColor = 0xff00A6F4;//数字颜色
+    private int textColor = 0xff00A6F4;//文本颜色
+    private int dashLineColor = 0xff00A6F4;//虚线颜色
     private int bgLineColor = 0xff3b71df;//背景线颜色
     private int bgColor = Color.WHITE;//大背景颜色
-    //    private boolean isInitParmater = false;
     private String text = "温度调节";
     private int numSize = dpToPx(15);//数字文本大小
     private int textSize = dpToPx(18);//文字文本大小
@@ -58,29 +58,13 @@ public class SlideAdjustView extends UIZBaseView {
     private MyCircle circleCenter;
     private int minValue = 40;
     private int maxValue = 99;
-    private int curDelta = 0;
     private Point thumbPoint = new Point();
     private Point oldThumbPoint = new Point();
     private double orgAngle;
     private int maxDelX = 0;
-    private int targetDelX = 0;
     private SlideAdjustListener mListener;
     private boolean isInit = false;
     private int initValue = Integer.MAX_VALUE;
-//    private boolean isShowAnimator = true;
-//    private ValueAnimator valueAnimator;
-
-//    private void beginAnimator() {
-//        valueAnimator = ValueAnimator.ofInt(curDelta, targetDelX);
-//        valueAnimator.setDuration(1000);
-//        valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-//        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//
-//            }
-//        });
-//    }
 
     public void setListener(SlideAdjustListener listener) {
         this.mListener = listener;
@@ -162,8 +146,9 @@ public class SlideAdjustView extends UIZBaseView {
         dashPaint.setAntiAlias(true);
         dashPaint.setColor(dashLineColor);
         dashPaint.setStyle(Paint.Style.STROKE);
+        dashPaint.setStrokeCap(Paint.Cap.ROUND);
         dashPaint.setStrokeWidth(dpToPx(4));
-        dashPaint.setPathEffect(new DashPathEffect(new float[]{dpToPx(4), dpToPx(4)}, 0));
+        dashPaint.setPathEffect(new DashPathEffect(new float[]{dpToPx(0.5f), dpToPx(10)}, 0));
 
         numHeight = getFontHeight(numPaint);
         textHeight = getFontHeight(textPaint);
@@ -171,14 +156,14 @@ public class SlideAdjustView extends UIZBaseView {
         setLayerType(LAYER_TYPE_SOFTWARE, null);
 
     }
-
-    private float startAngle;
-    private float sweepAngle;
+//    private float sweepAngle;
 
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        this.mWidth = w;
+        this.mHeight = h;
         initView();
     }
 
@@ -187,12 +172,13 @@ public class SlideAdjustView extends UIZBaseView {
      * 初始化基础参数
      */
     private void initView() {
-        mHeight = (int) (0.3f * mWidth);
         circleCenter = getCircleCenter(new PointF(0, thumRadius * 5), new PointF(mWidth / 2, thumRadius), new PointF(mWidth, thumRadius * 5));
+
+//        circleCenter = getCircleCenter(new PointF(mWidth / 2, thumRadius), new PointF(0, mHeight), new PointF(mWidth, mHeight));
         Log.e(TAG, "onSizeChanged: " + circleCenter.toString());
-        sweepAngle = calculateAngle(0);
-        startAngle = -sweepAngle - 90;
-        sweepAngle *= 2;
+//        sweepAngle = calculateAngle(0);
+//        startAngle = -sweepAngle - 90;
+//        sweepAngle *= 2;
 
         //初始化滑块的初始位置
         thumbPoint.x = mWidth / 2;
@@ -200,7 +186,7 @@ public class SlideAdjustView extends UIZBaseView {
 
         oldThumbPoint.x = thumbPoint.x;
         oldThumbPoint.y = thumbPoint.y;
-        orgAngle = Math.acos(mWidth / 2 / circleCenter.r);
+        orgAngle = Math.acos(mWidth / 2.0f / circleCenter.r);
         maxDelX = (int) (circleCenter.r * Math.cos(orgAngle));
         Log.e(TAG, "initView:最大maxDelX--->>>" + maxDelX);
         isInit = true;
@@ -390,5 +376,20 @@ public class SlideAdjustView extends UIZBaseView {
         void onMove(int value);
 
         void onFinished(int value);
+    }
+
+    protected int dpToPx(float dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
+    }
+
+    //  获取字体串宽度
+    protected int getStringWidth(Paint paint, String str) {
+        return (int) paint.measureText(str);
+    }
+
+    //  获取字体高度
+    protected int getFontHeight(Paint paint) {
+        Paint.FontMetrics fm = paint.getFontMetrics();
+        return (int) Math.ceil(fm.descent - fm.top) + 2;
     }
 }
