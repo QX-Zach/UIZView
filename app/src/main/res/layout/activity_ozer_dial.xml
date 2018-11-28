@@ -23,14 +23,49 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
+    <personal.ui.lingchen.uizview.UI.RippleIntroView
+        android:id="@+id/layout_ripple"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <personal.ui.lingchen.uizview.UI.LgdrfDialView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"/>
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:clickable="true"
+        android:fitsSystemWindows="true"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="36dp"
+            android:contentDescription="@null"
+            android:src="@mipmap/ic_add"
+            tools:ignore="RtlHardcoded" />
+
+        <ImageView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/iv_plus"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@null"
+            android:src="@mipmap/tips_subscribe"
+            tools:ignore="RtlHardcoded" />
+
+    </personal.ui.lingchen.uizview.UI.RippleIntroView>
+
+
+    <!--<LinearLayout-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<personal.ui.lingchen.uizview.UI.LgdrfDialView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="150dp"/>-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

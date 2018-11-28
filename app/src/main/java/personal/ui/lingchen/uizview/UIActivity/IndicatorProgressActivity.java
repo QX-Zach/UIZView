@@ -32,6 +32,14 @@ public class IndicatorProgressActivity extends AppCompatActivity implements View
         btnSetP = (Button) findViewById(R.id.btnSetP);
         etSetValue = (EditText) findViewById(R.id.etSetP);
         pillarView = (PillarView)findViewById(R.id.pillarView);
+//        pillarView.setFontShaderColors(new int[]{0x00ff00,0x00ffff,0xa381fb,0x00ff00});
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        pillarView.setFontShaderColors(new int[]{0x00ff00,0x00ffff,0xa381fb,0x00ff00});
     }
 
     private void initListener() {
@@ -62,6 +70,7 @@ public class IndicatorProgressActivity extends AppCompatActivity implements View
                     int value = Integer.parseInt(etSetValue.getText().toString().trim());
                     pillarView.setValue(value);
                 }
+//                pillarView.setFontShaderColors(new int[]{0xff00ff00,0xff00ffff,0xff00ff00});
                 break;
         }
     }

@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -24,19 +26,23 @@ import personal.ui.lingchen.uizview.R;
  * Description: 柱状百分比View
  */
 public class PillarView extends View {
+    private static final String TAG = "PillarView";
     private Paint bgPaint, fontPaint;
     private float circleR;//上下半圆半径
     private int bgColor = 0xffB1ECFE;//背景色
     private int fontColor = 0xff63d7fc;//前景色
+    private int fontCenterColor = fontColor;
     private int boundColor = Color.RED;//边框颜色
     private int currentValue = 0;//当前百分比值
     private int targetValue = 0;//目标值
     private int MAX_VALUE = 100;//默认最大值
     private Path backPath;//前景色前后两个图形路径
     private int ANIMATOR_DURATION = 1000;
-    private int offSet = dpToPx(1);
+    private int offSet = dpToPx(2);
     private RectF canRect;
     private boolean isShowBound = false;//是否显示边框
+    private int[] shaderColor = null;
+    private LinearGradient linearGradient = null;
 
     private int mWidth, mHeight;
 
@@ -51,6 +57,7 @@ public class PillarView extends View {
         bgColor = typedArray.getColor(R.styleable.PillarView_uiz_background_color, 0xffB1ECFE);
         fontColor = typedArray.getColor(R.styleable.PillarView_uiz_front_color, 0xff63d7fc);
         currentValue = typedArray.getInt(R.styleable.PillarView_uiz_value, 0);
+        fontCenterColor = typedArray.getColor(R.styleable.PillarView_uiz_front_cente_color, fontColor);
         isShowBound = typedArray.getBoolean(R.styleable.PillarView_uiz_show_bound, false);
         boundColor = typedArray.getColor(R.styleable.PillarView_uiz_bound_color, Color.RED);
         if (currentValue > MAX_VALUE) {
@@ -77,6 +84,9 @@ public class PillarView extends View {
         canRect.bottom = mHeight - offSet;
         this.circleR = Math.min(canRect.width(), canRect.height()) / 2;
         initBgPath();
+        linearGradient = new LinearGradient(0, 0, mWidth, 0, shaderColor, null, Shader.TileMode.REPEAT);
+        fontPaint.setShader(linearGradient);
+
 //        fontPaint.setShader(new LinearGradient(0, 0, mWidth, 0, new int[]{Color.RED, Color.GREEN}, null, Shader.TileMode.REPEAT));
     }
 
@@ -97,10 +107,11 @@ public class PillarView extends View {
         bgPaint.setDither(true);
         bgPaint.setColor(bgColor);
         bgPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-
+        shaderColor = new int[]{fontColor,fontCenterColor,fontColor};
     }
 
     private void initBgPath() {
+        backPath.reset();
         backPath.moveTo(mWidth / 2 - circleR, canRect.left + circleR);
         backPath.arcTo(new RectF(mWidth / 2 - circleR, canRect.top, mWidth / 2 + circleR, canRect.top + circleR * 2), -180, 180);
         backPath.lineTo(canRect.right, canRect.bottom - circleR);
@@ -113,9 +124,20 @@ public class PillarView extends View {
         if (targetValue > MAX_VALUE) {
             targetValue = MAX_VALUE;
         }
+
 //        postInvalidate();
         startAnimator();
     }
+
+//    public void setFontShaderColors(int[] colors) {
+//        if (colors != null && colors.length >= 2) {
+//            shaderColor = colors;
+//            if (mWidth > 0) {
+//                linearGradient = new LinearGradient(0, 0, mWidth, 0, colors, null, Shader.TileMode.REPEAT);
+//                postInvalidate();
+//            }
+//        }
+//    }
 
     private void startAnimator() {
         ValueAnimator valueAnimator = ValueAnimator.ofInt(currentValue, targetValue);

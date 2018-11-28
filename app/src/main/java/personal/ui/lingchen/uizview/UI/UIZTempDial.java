@@ -135,16 +135,6 @@ public class UIZTempDial extends UIZBaseView {
         }
 
         canvas.restore();
-
-//        canvas.save();
-//        canvas.translate(mWidth / 2, mHeight / 2);
-//        canvas.rotate(START_ANGLE - 90);
-//
-//        for (int curAngle = 0; curAngle <= SWEEP_ANGLE; curAngle += ANGLE_STEP) {
-//            canvas.drawLine(0, outDrawRadius, 0, outDrawRadius - lineLength, linePaint);
-//            canvas.rotate(ANGLE_STEP);
-//        }
-//        canvas.restore();
     }
 
     /**

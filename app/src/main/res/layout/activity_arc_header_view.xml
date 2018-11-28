@@ -31,7 +31,6 @@
     <!--app:layout_constraintRight_toRightOf="parent"-->
     <!--app:layout_constraintTop_toTopOf="parent"/>-->
 
-
     <personal.ui.lingchen.uizview.UI.UIZRippleCircle
         android:id="@+id/uizRippleCircle"
         android:layout_width="120dp"
@@ -67,4 +66,6 @@
         android:layout_marginTop="15dp"
         android:text="设置固定值"
         app:layout_constraintTop_toBottomOf="@+id/uizRippleCircle"/>
+
+
 </android.support.constraint.ConstraintLayout>

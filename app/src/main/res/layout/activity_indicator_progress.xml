@@ -65,10 +65,13 @@
 
     <personal.ui.lingchen.uizview.UI.PillarView
         android:id="@+id/pillarView"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        app:uiz_bound_color="@color/air_soso_bg"
-        app:uiz_show_bound="false"
-        app:uiz_value="0" />
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:uiz_bound_color="#ffa8a8a8"
+        app:uiz_front_color="#ffa8a8a8"
+        app:uiz_front_cente_color="#ffcdcdcd"
+        app:uiz_background_color="@color/white"
+        app:uiz_show_bound="true"
+        app:uiz_value="80" />
 
 </LinearLayout>

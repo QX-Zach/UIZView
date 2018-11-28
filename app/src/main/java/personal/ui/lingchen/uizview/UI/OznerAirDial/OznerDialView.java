@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -147,8 +148,6 @@ public class OznerDialView extends CustomerBaseView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//        Path path = new Path();
-//        path.in
         for (int i = 1; i < lineNum; i++) {
             if (i < transStep + transLineNum / 2 && i > transStep - transLineNum / 2) {
                 linePaint.setColor(getTransColor(i));
@@ -204,7 +203,6 @@ public class OznerDialView extends CustomerBaseView {
                 }
             });
         }
-
         rotateAnim.start();
     }
 

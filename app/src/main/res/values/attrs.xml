@@ -121,6 +121,7 @@
         <attr name="uiz_background_color" format="color|reference"/>
         <attr name="uiz_front_color" format="color|reference"/>
         <attr name="uiz_bound_color" format="color|reference"/>
+        <attr name="uiz_front_cente_color" format="color|reference"/>
         <attr name="uiz_show_bound" format="boolean"/>
     </declare-styleable>
 
