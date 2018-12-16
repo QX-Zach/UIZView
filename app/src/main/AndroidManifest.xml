@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="personal.ui.lingchen.uizview">
+    package="personal.ui.lingchen.uizview">
 
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.autofocus"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -16,36 +16,25 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UIActivity.IndicatorProgressActivity"/>
-        <activity android:name=".LoadingUI.SlackLoading.SlackLoadingActivity">
-        </activity>
-        <activity android:name=".UIActivity.WinnowerActivity">
-        </activity>
-        <activity android:name=".UIActivity.BezierTestActivity">
-        </activity>
-        <activity android:name=".UIActivity.OzerDialActivity">
-        </activity>
-        <activity android:name=".UIActivity.RecyleViewActivity">
-        </activity>
-        <activity android:name=".UI.Snowflake.SnowFlokeActivity">
-        </activity>
-        <activity android:name=".UIActivity.SeekBarActivity">
-        </activity>
-        <activity android:name=".UIActivity.OznerTempDialActivity">
-        </activity>
-        <activity android:name=".UIActivity.RealTempTestActivity">
-        </activity>
-        <activity android:name=".UIActivity.ArcHeaderViewActivity">
-        </activity>
-        <activity android:name=".UIActivity.CameraTestActivity">
-        </activity>
-        <activity android:name=".UIActivity.GradientTestActivity">
-        </activity>
+        <activity android:name=".UIActivity.IndicatorProgressActivity" />
+        <activity android:name=".LoadingUI.SlackLoading.SlackLoadingActivity"></activity>
+        <activity android:name=".UIActivity.WinnowerActivity"></activity>
+        <activity android:name=".UIActivity.BezierTestActivity"></activity>
+        <activity android:name=".UIActivity.OzerDialActivity"></activity>
+        <activity android:name=".UIActivity.RecyleViewActivity"></activity>
+        <activity android:name=".UI.Snowflake.SnowFlokeActivity"></activity>
+        <activity android:name=".UIActivity.SeekBarActivity"></activity>
+        <activity android:name=".UIActivity.OznerTempDialActivity"></activity>
+        <activity android:name=".UIActivity.RealTempTestActivity"></activity>
+        <activity android:name=".UIActivity.ArcHeaderViewActivity"></activity>
+        <activity android:name=".UIActivity.CameraTestActivity"></activity>
+        <activity android:name=".UIActivity.GradientTestActivity"></activity>
+        <activity android:name=".UIActivity.WeatherActivity"></activity>
     </application>
 
 </manifest>

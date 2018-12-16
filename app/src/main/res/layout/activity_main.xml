@@ -193,4 +193,15 @@
         app:uiz_left_text_color="@color/cyan"
         app:uiz_left_text_size="14dp"
         app:uiz_left_text_value="lingchen"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="天气"
+            android:id="@+id/btnWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

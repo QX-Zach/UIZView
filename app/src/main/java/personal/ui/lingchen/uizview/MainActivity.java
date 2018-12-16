@@ -39,6 +39,7 @@ import personal.ui.lingchen.uizview.UIActivity.OznerTempDialActivity;
 import personal.ui.lingchen.uizview.UIActivity.RealTempTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.RecyleViewActivity;
 import personal.ui.lingchen.uizview.UIActivity.SeekBarActivity;
+import personal.ui.lingchen.uizview.UIActivity.WeatherActivity;
 import personal.ui.lingchen.uizview.Utils.FlashLightManager;
 import personal.ui.lingchen.uizview.Utils.OznerColorUtils;
 import personal.ui.lingchen.uizview.Utils.WPTempColorUtil;
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnLight;
     @BindView(R.id.btnGradient)
     Button btnGradient;
+    @BindView(R.id.btnWeather)
+    Button btnWeather;
 
     private boolean isLightOn = false;
     private CameraManager cameraManager;
@@ -136,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @OnClick({R.id.btn_indicatorProgress, R.id.btn_RecyleView, R.id.btn_oznerDial, R.id.btn_bezier,
             R.id.btn_slackView, R.id.btn_animation, R.id.btn_snowflake, R.id.btn_seekBar, R.id.btn_tempDial,
-            R.id.btn_WarmCupUI, R.id.btn_ripple_circle, R.id.btn_light, R.id.btnGradient})
+            R.id.btn_WarmCupUI, R.id.btn_ripple_circle, R.id.btn_light, R.id.btnGradient,R.id.btnWeather})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -186,6 +189,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnGradient:
                 startActivity(new Intent(MainActivity.this, GradientTestActivity.class));
+                break;
+            case R.id.btnWeather:
+                startActivity(new Intent(MainActivity.this,WeatherActivity.class));
                 break;
 
         }
