@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HexagonDrawable hexagonDrawable2 = new HexagonDrawable();
         hexagonDrawable2.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.meizi1));
         ivHex2.setImageDrawable(hexagonDrawable2);
-        Log.e(TAG, "onCreate: "+roundUpToPowerOf2(5));
-        Log.e(TAG, "onCreate: "+roundUpToPowerOf2(9));
-        Log.e(TAG, "onCreate: "+roundUpToPowerOf2(8));
+        Log.e(TAG, "onCreate: " + roundUpToPowerOf2(5));
+        Log.e(TAG, "onCreate: " + roundUpToPowerOf2(9));
+        Log.e(TAG, "onCreate: " + roundUpToPowerOf2(8));
         uizTimeRemain.setProcessMax(1440);
 
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int roundUpToPowerOf2(int number) {
         // assert number >= 0 : "number must be non-negative";
-        return number >= 12 ? 12: (number > 1) ? Integer.highestOneBit((number - 1) << 1) : 1;
+        return number >= 12 ? 12 : (number > 1) ? Integer.highestOneBit((number - 1) << 1) : 1;
     }
 
     /**
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @OnClick({R.id.btn_indicatorProgress, R.id.btn_RecyleView, R.id.btn_oznerDial, R.id.btn_bezier,
             R.id.btn_slackView, R.id.btn_animation, R.id.btn_snowflake, R.id.btn_seekBar, R.id.btn_tempDial,
-            R.id.btn_WarmCupUI, R.id.btn_ripple_circle, R.id.btn_light, R.id.btnGradient,R.id.btnWeather})
+            R.id.btn_WarmCupUI, R.id.btn_ripple_circle, R.id.btn_light, R.id.btnGradient, R.id.btnWeather, R.id.btnMore})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_indicatorProgress:
@@ -178,22 +178,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_light:
                 startActivity(new Intent(MainActivity.this, CameraTestActivity.class));
-//                lightSwitch(!isLightOn);
-//                if (isLightOn) {
-//                    flashLightMgr.turnOff();
-//                    isLightOn = false;
-//                } else {
-//                    flashLightMgr.turnOn();
-//                    isLightOn = true;
-//                }
                 break;
             case R.id.btnGradient:
                 startActivity(new Intent(MainActivity.this, GradientTestActivity.class));
                 break;
             case R.id.btnWeather:
-                startActivity(new Intent(MainActivity.this,WeatherActivity.class));
+                startActivity(new Intent(MainActivity.this, WeatherActivity.class));
                 break;
-
+            case R.id.btnMore:
+                startActivity(new Intent(MainActivity.this, UIListActivity.class));
+                break;
+            default:
+                break;
         }
     }
 

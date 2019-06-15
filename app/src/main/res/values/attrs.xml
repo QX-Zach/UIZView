@@ -140,4 +140,15 @@
         <attr name="marqueeview_isclickalbe_stop" format="boolean"/><!--是否点击暂停-->
         <attr name="marqueeview_is_resetLocation" format="boolean"/><!--重新改变内容的时候 ， 是否初始化 位置，默认为true，改变-->
     </declare-styleable>
+
+    <declare-styleable name="UIZPolygonalChart2">
+        <attr name="uizGridColor" format="color|reference"/>
+        <attr name="uizDateColor" format="color|reference"/>
+        <attr name="uizDefaultTagColor" format="color|reference"/>
+        <attr name="uizGradientStartColor" format="color|reference"/>
+        <attr name="uizGradientEndColor" format="color|reference"/>
+        <attr name="uizShowValueLine" format="boolean"/>
+        <attr name="uizMaxValue" format="integer"/>
+        <attr name="uizValueLineColor" format="color|reference"/>
+    </declare-styleable>
 </resources>

@@ -14,6 +14,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UIActivity.ZheXianActivity"></activity>
+        <activity android:name=".UIListActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,19 +24,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".UIActivity.IndicatorProgressActivity" />
-        <activity android:name=".LoadingUI.SlackLoading.SlackLoadingActivity"></activity>
-        <activity android:name=".UIActivity.WinnowerActivity"></activity>
-        <activity android:name=".UIActivity.BezierTestActivity"></activity>
-        <activity android:name=".UIActivity.OzerDialActivity"></activity>
-        <activity android:name=".UIActivity.RecyleViewActivity"></activity>
-        <activity android:name=".UI.Snowflake.SnowFlokeActivity"></activity>
-        <activity android:name=".UIActivity.SeekBarActivity"></activity>
-        <activity android:name=".UIActivity.OznerTempDialActivity"></activity>
-        <activity android:name=".UIActivity.RealTempTestActivity"></activity>
-        <activity android:name=".UIActivity.ArcHeaderViewActivity"></activity>
-        <activity android:name=".UIActivity.CameraTestActivity"></activity>
-        <activity android:name=".UIActivity.GradientTestActivity"></activity>
-        <activity android:name=".UIActivity.WeatherActivity"></activity>
+        <activity android:name=".LoadingUI.SlackLoading.SlackLoadingActivity" />
+        <activity android:name=".UIActivity.WinnowerActivity" />
+        <activity android:name=".UIActivity.BezierTestActivity" />
+        <activity android:name=".UIActivity.OzerDialActivity" />
+        <activity android:name=".UIActivity.RecyleViewActivity" />
+        <activity android:name=".UI.Snowflake.SnowFlokeActivity" />
+        <activity android:name=".UIActivity.SeekBarActivity" />
+        <activity android:name=".UIActivity.OznerTempDialActivity" />
+        <activity android:name=".UIActivity.RealTempTestActivity" />
+        <activity android:name=".UIActivity.ArcHeaderViewActivity" />
+        <activity android:name=".UIActivity.CameraTestActivity" />
+        <activity android:name=".UIActivity.GradientTestActivity" />
+        <activity android:name=".UIActivity.WeatherActivity" />
     </application>
 
 </manifest>
