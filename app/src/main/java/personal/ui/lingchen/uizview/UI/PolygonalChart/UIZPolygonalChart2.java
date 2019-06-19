@@ -29,14 +29,18 @@ import personal.ui.lingchen.uizview.R;
  * @ProjectName: UIZView
  * @PackageName: personal.ui.lingchen.uizview.UI.PolygonalChart
  * @Description:
+ * 使用顺序：
+ * 0、准备：调用设置参数方法，设置各个颜色值，并调用apply方法刷新
+ * 1、调用setCurrentMonth设置当前月份，从1开始；
+ * 2、调用setValueInfo设置数据
  */
 public class UIZPolygonalChart2 extends View {
     //设置默认的宽和高
-    private static final int DEFUALT_VIEW_WIDTH = 300;
-    private static final int DEFUALT_VIEW_HEIGHT = 100;
+    private final int DEFUALT_VIEW_WIDTH = 300;
+    private final int DEFUALT_VIEW_HEIGHT = 100;
     private int mWidth, mHeight;
     private Paint gridPaint, valuePaint, textPaint, valueLinePaint;
-    private int valueLineColor =0;
+    private int valueLineColor = 0;
     private int gridColor = 0xFF7A90B6;
     private int dateColor = 0xFF7A90B6;
     private int defaultTagColor = 0xFF7A90B6;
@@ -143,7 +147,7 @@ public class UIZPolygonalChart2 extends View {
         invalidate();
     }
 
-    public void setValueInfor(List<ValueInfo> infos) {
+    public void setValueInfos(List<ValueInfo> infos) {
         if (null == valueInfos) {
             valueInfos = new ArrayList<>();
         }
@@ -308,15 +312,21 @@ public class UIZPolygonalChart2 extends View {
     /**
      * 数据对象，绘制折线图使用
      */
-    public final class ValueInfo {
+    public static final class ValueInfo {
+        /**
+         * 从0开始
+         */
         public int dayOfMonth;
+        /**
+         * 当天的值，根据最大值限定
+         */
         public float value;
     }
 
     /**
      * 标签及线条信息
      */
-    public final class TagInfo {
+    public static final class TagInfo {
         public String tag;
         public int tagPercent;
         public int valueColor;
@@ -333,14 +343,14 @@ public class UIZPolygonalChart2 extends View {
     public UIZPolygonalChart2(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.UIZPolygonalChart2);
-        gridColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizGridColor,gridColor);
-        dateColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizDateColor,dateColor);
-        defaultTagColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizDefaultTagColor,defaultTagColor);
-        graintStartColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizGradientStartColor,graintStartColor);
-        graintEndColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizGradientEndColor,graintEndColor);
-        maxValue = typedArray.getInt(R.styleable.UIZPolygonalChart2_uizMaxValue,maxValue);
-        valueLineColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizValueLineColor,valueLineColor);
-        showValueLine = typedArray.getBoolean(R.styleable.UIZPolygonalChart2_uizShowValueLine,false);
+        gridColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizGridColor, gridColor);
+        dateColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizDateColor, dateColor);
+        defaultTagColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizDefaultTagColor, defaultTagColor);
+        graintStartColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizGradientStartColor, graintStartColor);
+        graintEndColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizGradientEndColor, graintEndColor);
+        maxValue = typedArray.getInt(R.styleable.UIZPolygonalChart2_uizMaxValue, maxValue);
+        valueLineColor = typedArray.getColor(R.styleable.UIZPolygonalChart2_uizValueLineColor, valueLineColor);
+        showValueLine = typedArray.getBoolean(R.styleable.UIZPolygonalChart2_uizShowValueLine, false);
         typedArray.recycle();
         init();
     }
@@ -411,39 +421,30 @@ public class UIZPolygonalChart2 extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
-        int width = measureDimension(DEFUALT_VIEW_WIDTH, widthMeasureSpec);
-        int height = measureDimension(DEFUALT_VIEW_HEIGHT, heightMeasureSpec);
-        //将计算的宽和高设置进去，保存，最后一步一定要有
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int width, height;
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize;
+        } else if (widthMode == MeasureSpec.AT_MOST) {
+            width = Math.min(dpToPx(DEFUALT_VIEW_WIDTH), widthSize);
+        } else if (widthMode == MeasureSpec.UNSPECIFIED) {
+            width = dpToPx(DEFUALT_VIEW_WIDTH);
+        } else {
+            width = dpToPx(DEFUALT_VIEW_WIDTH);
+        }
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightSize;
+        } else if (heightMode == MeasureSpec.AT_MOST) {
+            height = Math.min(dpToPx(DEFUALT_VIEW_HEIGHT), heightSize);
+        } else if (heightMode == MeasureSpec.UNSPECIFIED) {
+            height = dpToPx(DEFUALT_VIEW_HEIGHT);
+        } else {
+            height = dpToPx(DEFUALT_VIEW_HEIGHT);
+        }
         setMeasuredDimension(width, height);
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-    }
-
-    /**
-     * @param defualtSize 设置的默认大小
-     * @param measureSpec 父控件传来的widthMeasureSpec，heightMeasureSpec
-     * @return 结果
-     */
-    public int measureDimension(int defualtSize, int measureSpec) {
-        int result = defualtSize;
-        int specMode = MeasureSpec.getMode(measureSpec);
-        int specSize = MeasureSpec.getSize(measureSpec);
-
-        //1,layout中自定义组件给出来确定的值，比如100dp
-        //2,layout中自定义组件使用的是match_parent，但父控件的size已经可以确定了，比如设置的具体的值或者match_parent
-        if (specMode == MeasureSpec.EXACTLY) {
-            result = specSize;
-        }
-        //layout中自定义组件使用的wrap_content
-        else if (specMode == MeasureSpec.AT_MOST) {
-            result = Math.min(defualtSize, specSize);//建议：result不能大于specSize
-        }
-        //UNSPECIFIED,没有任何限制，所以可以设置任何大小
-        else {
-            result = defualtSize;
-        }
-        return result;
     }
 
 
