@@ -27,20 +27,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="$UIActivity.IndicatorProgressActivity" />
-        <activity android:name="$LoadingUI.SlackLoading.SlackLoadingActivity" />
-        <activity android:name="$UIActivity.WinnowerActivity" />
-        <activity android:name="$UIActivity.BezierTestActivity" />
-        <activity android:name="$UIActivity.OzerDialActivity" />
-        <activity android:name="$UIActivity.RecyleViewActivity" />
-        <activity android:name="$UI.Snowflake.SnowFlokeActivity" />
-        <activity android:name="$UIActivity.SeekBarActivity" />
-        <activity android:name="$UIActivity.OznerTempDialActivity" />
-        <activity android:name="$UIActivity.RealTempTestActivity" />
-        <activity android:name="$UIActivity.ArcHeaderViewActivity" />
-        <activity android:name="$UIActivity.CameraTestActivity" />
-        <activity android:name="$UIActivity.GradientTestActivity" />
-        <activity android:name="$UIActivity.WeatherActivity" />
+        <activity android:name=".UIActivity.IndicatorProgressActivity" />
+        <activity android:name=".LoadingUI.SlackLoading.SlackLoadingActivity" />
+        <activity android:name=".UIActivity.WinnowerActivity" />
+        <activity android:name=".UIActivity.BezierTestActivity" />
+        <activity android:name=".UIActivity.OzerDialActivity" />
+        <activity android:name=".UIActivity.RecyleViewActivity" />
+        <activity android:name=".UI.Snowflake.SnowFlokeActivity" />
+        <activity android:name=".UIActivity.SeekBarActivity" />
+        <activity android:name=".UIActivity.OznerTempDialActivity" />
+        <activity android:name=".UIActivity.RealTempTestActivity" />
+        <activity android:name=".UIActivity.ArcHeaderViewActivity" />
+        <activity android:name=".UIActivity.CameraTestActivity" />
+        <activity android:name=".UIActivity.GradientTestActivity" />
+        <activity android:name=".UIActivity.WeatherActivity" />
     </application>
 
 </manifest>
