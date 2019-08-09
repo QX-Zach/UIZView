@@ -24,8 +24,15 @@ public class WeatherActivity extends AppCompatActivity {
         findViewById(R.id.btnAddData).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentHour -= 3;
-                addData(5, currentHour);
+                currentHour -= 10;
+                addData(20, currentHour);
+            }
+        });
+        wvWeather.setWeatherScrollListener(new WeatherView.WeatherScrollListener() {
+            @Override
+            public void needNewData() {
+                currentHour -= 5;
+                addData(10, currentHour);
             }
         });
     }

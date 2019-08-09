@@ -63,33 +63,28 @@ public class WeatherView extends View {
      */
     private int COLUM_COUNT_SHOW = 5;
 
-    //行高百分比
-//    private int[] rowHeightPer = {1, 1, 2, 2, 2, 3};
-//    private float minRowHeight = 0;
     private List<WeatherBean> weatherData;// = new WeatherBean[5];
     private RangeValue rangeValue;//天气数据上下限
-    /**
-     * 标签背景
-     */
-//    Bitmap labelBitmap;
 
+    private final int NEED_DATA_NO = 0;
+    private final int NEED_DATA_NEED = 1;
+    private final int NEED_DATA_LOADING = 2;
+    private final int NEED_DATA_COMPLETE = 3;
+    /**
+     * 需要数据的状态，0-不需要数据，1-需要数据，2-正在加载数据，3-加载数据完成
+     */
+    private int needDataStatus = NEED_DATA_NO;
     /**
      * 滑动偏移量，默认滑动到最右边为0,向左滑动值减小
      */
     private float scrollOffset = 0;
-    private float minScrollX = 0;
-    /**
-     * 第一个数据点索引
-     */
-    private float defIndex = 0;
+    private float maxScrollX = 0;
 
     private GestureDetector mGestureDetector;
+    private WeatherScrollListener mListener;
 
 
     private String[] leftLabel = {"时间", "温度", "湿度", "雨量", "风速"};
-//    private Bitmap[] weatherBitmaps;
-
-//    BitmapFactory.Options options = new BitmapFactory.Options();
 
     public WeatherView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -103,41 +98,29 @@ public class WeatherView extends View {
         this.invalidate();
     }
 
+    /**
+     * 设置需要加载数据监听
+     *
+     * @param listener
+     */
+    public void setWeatherScrollListener(WeatherScrollListener listener) {
+        this.mListener = listener;
+    }
 
     public void setData(List<WeatherBean> data) {
         if (weatherData.size() == 0 && data.size() < COLUM_COUNT_SHOW) {
             throw new RuntimeException("天气数据最少需要" + COLUM_COUNT_SHOW + "个");
         }
         weatherData.addAll(0, data);
-        //设置默认第一个数据点索引
-        defIndex = weatherData.size() - COLUM_COUNT_SHOW;
+        needDataStatus = NEED_DATA_COMPLETE;
         calculateRangeFromArray(data);
         this.postInvalidate();
     }
 
-    /**
-     * 加载天气图片
-     */
-//    private void loadWeatherBitmaps() {
-//        if (weatherBitmaps == null) {
-//            weatherBitmaps = new Bitmap[5];
-//        }
-//
-//        for (int i = 0; i < 5; i++) {
-//            if (weatherBitmaps[i] != null && !weatherBitmaps[i].isRecycled()) {
-//                weatherBitmaps[i].recycle();
-//            }
-//            weatherBitmaps[i] = BitmapFactory.decodeResource(getResources(), weatherData[i].getWeatherIconResId(), options);
-//        }
-//    }
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-//        for (int i = 0; i < weatherBitmaps.length; i++) {
-//            if (!weatherBitmaps[i].isRecycled()) {
-//                weatherBitmaps[i].recycle();
-//            }
-//        }
+        weatherData.clear();
     }
 
     @Override
@@ -154,12 +137,6 @@ public class WeatherView extends View {
     private void calculateData() {
         columnWidth = mWidth / 6.0f;
         rowHeight = mHeight / 6.0f;
-        int rowPerTotal = 0;
-//        for (int i = 0; i < rowHeightPer.length; i++) {
-//            rowPerTotal += rowHeightPer[i];
-//        }
-//
-//        minRowHeight = rowPerTotal != 0 ? mHeight / rowPerTotal : mHeight/6.0f;
     }
 
     @Override
@@ -173,8 +150,8 @@ public class WeatherView extends View {
         super.onDraw(canvas);
         drawBg();
 
+        calculateLeftSstartX();
         drawSeparator(canvas);
-
         drawPointAndValue(canvas);
         drawLeftLabel(canvas);
     }
@@ -186,7 +163,6 @@ public class WeatherView extends View {
         mGestureDetector = new GestureDetector(getContext(), new GestureListener());
         weatherData = new ArrayList<>();
         rangeValue = new RangeValue();
-//        labelBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.weatherbg);
         mPaint = new Paint();
         mPaint.setColor(Color.WHITE);
 
@@ -213,7 +189,6 @@ public class WeatherView extends View {
         mPaint.setColor(separatorLineColor);
         //绘制标签右边的分割线
         canvas.drawLine(columnWidth, marginTop, columnWidth, mHeight - marginBottom, mPaint);
-        calculateLeftSstartX();
         //数据的分割线从第一个数据右边开始,并且增加滑动偏移量
         for (int i = 1; i < weatherData.size(); i++) {
             canvas.drawLine(leftStartX + columnWidth * (i + 1) + scrollOffset, marginTop
@@ -232,7 +207,7 @@ public class WeatherView extends View {
      */
     private void drawLeftLabel(Canvas canvas) {
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setShader(new LinearGradient(0, 0, columnWidth, mHeight, new int[]{0xff775b8a, 0xff78b5d0}, null, Shader.TileMode.CLAMP));
+        mPaint.setShader(new LinearGradient(0, 0, 0, mHeight, new int[]{0xff775b8a, 0xff78b5d0}, null, Shader.TileMode.CLAMP));
         canvas.drawRect(0, 0, columnWidth, mHeight, mPaint);
         mPaint.setColor(textColor);
         mPaint.setStyle(Paint.Style.FILL);
@@ -261,10 +236,16 @@ public class WeatherView extends View {
 
     private float leftStartX = 0;
 
+    private float needNewMinScroll = 0;
 
     private void calculateLeftSstartX() {
         leftStartX = mWidth - columnWidth * (weatherData.size() + 1);
-        minScrollX = leftStartX;
+        maxScrollX = leftStartX;
+        if (weatherData.size() <= COLUM_COUNT_SHOW) {
+            needNewMinScroll = leftStartX;
+        } else {
+            needNewMinScroll = leftStartX + columnWidth * COLUM_COUNT_SHOW;
+        }
     }
 
     /**
@@ -275,7 +256,6 @@ public class WeatherView extends View {
     private void drawRowData(Canvas canvas) {
 
         if (weatherData != null && weatherData.size() >= COLUM_COUNT_SHOW) {
-            calculateLeftSstartX();
             mPaint.setColor(textColor);
             mPaint.setStyle(Paint.Style.FILL);
             //绘制时间
@@ -397,7 +377,6 @@ public class WeatherView extends View {
      */
     private void calculateRangeFromArray(List<WeatherBean> data) {
         if (data != null && data.size() > 0) {
-//            RangeValue rangeValue = new RangeValue();
             if (weatherData.isEmpty()) {
                 rangeValue.maxHumidity = data.get(0).getSD();
                 rangeValue.minHumidity = data.get(0).getSD();
@@ -432,9 +411,17 @@ public class WeatherView extends View {
                     rangeValue.minFengsu = data.get(i).getFS();
                 }
             }
-//            return rangeValue;
         }
-//        return null;
+    }
+
+    /**
+     * 滚动监听
+     */
+    public interface WeatherScrollListener {
+        /**
+         * 需要加载新的数据
+         */
+        void needNewData();
     }
 
 
@@ -477,12 +464,30 @@ public class WeatherView extends View {
 //            }
 
             scrollOffset -= distanceX;
+            boolean need = scrollOffset > Math.abs(needNewMinScroll)
+                    && (NEED_DATA_COMPLETE == needDataStatus || NEED_DATA_NO == needDataStatus);
 
-            if (scrollOffset > Math.abs(minScrollX)) {
-                scrollOffset = Math.abs(minScrollX);
+            if (need) {
+                needDataStatus = NEED_DATA_NEED;
+            }
+
+            if (NEED_DATA_NEED == needDataStatus) {
+                Log.e(TAG, "onScroll: columWidth:" + columnWidth);
+                Log.e(TAG, "onScroll:需要增加新的数据: " + needNewMinScroll);
+                Log.e(TAG, "onScroll:当前滚动距离: " + scrollOffset);
+                needDataStatus = NEED_DATA_LOADING;
+                if (mListener != null) {
+                    mListener.needNewData();
+                }
+            }
+
+            if (scrollOffset > Math.abs(maxScrollX)) {
+                scrollOffset = Math.abs(maxScrollX);
             } else if (scrollOffset < 0) {
                 scrollOffset = 0;
             }
+
+
             postInvalidate();
 
             return true;
@@ -495,11 +500,10 @@ public class WeatherView extends View {
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//            float x = e2.getX() - e1.getX();
-
             return false;
         }
     }
+
 
     /**
      * author：zach
