@@ -3,6 +3,7 @@ package personal.ui.lingchen.uizview.UIActivity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,10 @@ public class ZheXianActivity extends AppCompatActivity {
         uizPolygonalChart2 = (UIZPolygonalChart2) findViewById(R.id.uizOil);
         setTags();
         loadData();
+    }
+
+    public void showDialog(View view){
+
     }
 
     private void loadData() {

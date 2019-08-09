@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UIActivity.CirclePercentActivity">
+
+
+    <personal.ui.lingchen.uizview.UI.SpecialMaskView
+        android:id="@+id/smvContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/uizPercent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </personal.ui.lingchen.uizview.UI.SpecialMaskView>
+
+    <personal.ui.lingchen.uizview.UI.UIZCirclePercent
+        android:id="@+id/uizPercent"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--<personal.ui.lingchen.uizview.UI.CustomViewGroup-->
+        <!--android:id="@+id/cvgContainer"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:horizontalSpacing="10dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:verticalSpacing="10dp">-->
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#00ff00"-->
+            <!--android:text="Hello!"-->
+            <!--android:textSize="20sp" />-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#00ff00"-->
+            <!--android:text="Hello!"-->
+            <!--android:textSize="20sp" />-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#00ff00"-->
+            <!--android:text="Hello!"-->
+            <!--android:textSize="20sp" />-->
+
+    <!--</personal.ui.lingchen.uizview.UI.CustomViewGroup>-->
+
+    <Button
+        android:layout_marginBottom="20dp"
+        app:layout_constraintRight_toLeftOf="@+id/btnMinus"
+        android:id="@+id/btnAdd"
+        android:text="增加"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginBottom="20dp"
+        app:layout_constraintRight_toLeftOf="@+id/btnChingeColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnAdd"
+        android:id="@+id/btnMinus"
+        android:text="减少"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginBottom="20dp"
+        app:layout_constraintRight_toLeftOf="@+id/btnChingeColum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnMinus"
+        android:id="@+id/btnChingeColor"
+        android:text="颜色"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginBottom="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnChingeColor"
+        android:id="@+id/btnChingeColum"
+        android:text="列数"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</android.support.constraint.ConstraintLayout>

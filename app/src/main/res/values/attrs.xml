@@ -1,154 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CustomSeekBar">
-        <attr name="numTextFormat" format="string"/>
-        <attr name="numbackground" format="reference"/>
-        <attr name="numTextSize" format="dimension"/>
-        <attr name="numTextColor" format="color"/>
-        <attr name="numScale" format="string"/>
-        <attr name="processMin" format="float|integer"/>
-        <attr name="processMax" format="float|integer"/>
-        <attr name="isFloatType" format="boolean"/>
-        <attr name="isSection" format="boolean"/>
+        <attr name="numTextFormat" format="string" />
+        <attr name="numbackground" format="reference" />
+        <attr name="numTextSize" format="dimension" />
+        <attr name="numTextColor" format="color" />
+        <attr name="numScale" format="string" />
+        <attr name="processMin" format="float|integer" />
+        <attr name="processMax" format="float|integer" />
+        <attr name="isFloatType" format="boolean" />
+        <attr name="isSection" format="boolean" />
         <!--浮点类型数据精度，小数点后位数的十倍-->
-        <attr name="floatTypeDPI" format="integer"/>
+        <attr name="floatTypeDPI" format="integer" />
         <attr name="numType" format="enum">
-            <enum name="top" value="48"/>
-            <enum name="bottom" value="80"/>
+            <enum name="top" value="48" />
+            <enum name="bottom" value="80" />
         </attr>
 
     </declare-styleable>
 
 
     <declare-styleable name="BubbleSeekBar">
-        <attr name="bsb_min" format="float|reference"/> <!--min < max, default: 0.0f-->
-        <attr name="bsb_max" format="float|reference"/> <!--min < max, default: 100.0f-->
-        <attr name="bsb_progress" format="float|reference"/> <!--real time progress value, default: min-->
-        <attr name="bsb_is_float_type" format="boolean"/> <!--support for float type-->
-        <attr name="bsb_track_size" format="dimension|reference"/> <!--height of right-track(on the right of thumb), default: 2dp-->
+        <attr name="bsb_min" format="float|reference" /> <!--min < max, default: 0.0f-->
+        <attr name="bsb_max" format="float|reference" /> <!--min < max, default: 100.0f-->
+        <attr name="bsb_progress" format="float|reference" /> <!--real time progress value, default: min-->
+        <attr name="bsb_is_float_type" format="boolean" /> <!--support for float type-->
+        <attr name="bsb_track_size" format="dimension|reference" /> <!--height of right-track(on the right of thumb), default: 2dp-->
         <!--height of left-track(on the left of thumb), default: 2dp higher than right-track's height-->
-        <attr name="bsb_second_track_size" format="dimension|reference"/>
-        <attr name="bsb_thumb_radius" format="dimension|reference"/> <!--radius of thumb, default: 2dp higher than left-track's height-->
+        <attr name="bsb_second_track_size" format="dimension|reference" />
+        <attr name="bsb_thumb_radius" format="dimension|reference" /> <!--radius of thumb, default: 2dp higher than left-track's height-->
         <!--radius of thumb when be dragging, default: 2 times of left-track's height-->
-        <attr name="bsb_thumb_radius_on_dragging" format="dimension|reference"/>
-        <attr name="bsb_track_color" format="color|reference"/> <!--color of right-track, default: R.color.colorPrimary-->
-        <attr name="bsb_second_track_color" format="color|reference"/> <!--color of left-track, default: R.color.colorAccent-->
-        <attr name="bsb_thumb_color" format="color|reference"/> <!--color of thumb, default: same as left-track's color-->
-        <attr name="bsb_section_count" format="integer|reference"/> <!--shares of whole progress(max - min), default: 10-->
-        <attr name="bsb_show_section_mark" format="boolean"/> <!--show demarcation points or not, default: false-->
-        <attr name="bsb_auto_adjust_section_mark" format="boolean"/> <!--auto scroll to the nearest section_mark or not, default: false-->
-        <attr name="bsb_show_section_text" format="boolean"/> <!--show section-text or not, default: false-->
-        <attr name="bsb_section_text_size" format="dimension|reference"/> <!--text size of section-text, default: 14sp-->
-        <attr name="bsb_section_text_color" format="color|reference"/> <!--text color of section-text, default: same as right-track's color-->
+        <attr name="bsb_thumb_radius_on_dragging" format="dimension|reference" />
+        <attr name="bsb_track_color" format="color|reference" /> <!--color of right-track, default: R.color.colorPrimary-->
+        <attr name="bsb_second_track_color" format="color|reference" /> <!--color of left-track, default: R.color.colorAccent-->
+        <attr name="bsb_thumb_color" format="color|reference" /> <!--color of thumb, default: same as left-track's color-->
+        <attr name="bsb_section_count" format="integer|reference" /> <!--shares of whole progress(max - min), default: 10-->
+        <attr name="bsb_show_section_mark" format="boolean" /> <!--show demarcation points or not, default: false-->
+        <attr name="bsb_auto_adjust_section_mark" format="boolean" /> <!--auto scroll to the nearest section_mark or not, default: false-->
+        <attr name="bsb_show_section_text" format="boolean" /> <!--show section-text or not, default: false-->
+        <attr name="bsb_section_text_size" format="dimension|reference" /> <!--text size of section-text, default: 14sp-->
+        <attr name="bsb_section_text_color" format="color|reference" /> <!--text color of section-text, default: same as right-track's color-->
         <!--text position of section-text relative to track, sides, bottom_sides, below_section_mark, default: sides-->
         <attr name="bsb_section_text_position">
-            <enum name="sides" value="0"/>
-            <enum name="bottom_sides" value="1"/>
-            <enum name="below_section_mark" value="2"/>
+            <enum name="sides" value="0" />
+            <enum name="bottom_sides" value="1" />
+            <enum name="below_section_mark" value="2" />
         </attr>
-        <attr name="bsb_section_text_interval" format="integer"/> <!--the interval of two section-text, default: 1-->
-        <attr name="bsb_show_thumb_text" format="boolean"/> <!--show real time progress-text under thumb or not, default: false-->
-        <attr name="bsb_thumb_text_size" format="dimension|reference"/> <!--text size of progress-text, default: 14sp-->
-        <attr name="bsb_thumb_text_color" format="color|reference"/> <!--text color of progress-text, default: same as left-track's color-->
-        <attr name="bsb_show_progress_in_float" format="boolean"/> <!--show bubble-progress in float or not, default: false-->
-        <attr name="bsb_touch_to_seek" format="boolean"/> <!--touch anywhere on track to quickly seek, default: false-->
-        <attr name="bsb_seek_by_section" format="boolean"/> <!--seek by section, the progress may not be linear, default: false-->
-        <attr name="bsb_bubble_color" format="color|reference"/> <!--color of bubble, default: same as left-track's color-->
-        <attr name="bsb_bubble_text_size" format="dimension|reference"/> <!--text size of bubble-progress, default: 14sp-->
-        <attr name="bsb_bubble_text_color" format="color|reference"/> <!--text color of bubble-progress, default: #ffffffff-->
-        <attr name="bsb_anim_duration" format="integer"/> <!--duration of animation, default: 200ms-->
-        <attr name="bsb_always_show_bubble" format="boolean"/> <!--bubble shows all time, default: false-->
-        <attr name="bsb_suffix" format="string"/> <!--后缀-->
+        <attr name="bsb_section_text_interval" format="integer" /> <!--the interval of two section-text, default: 1-->
+        <attr name="bsb_show_thumb_text" format="boolean" /> <!--show real time progress-text under thumb or not, default: false-->
+        <attr name="bsb_thumb_text_size" format="dimension|reference" /> <!--text size of progress-text, default: 14sp-->
+        <attr name="bsb_thumb_text_color" format="color|reference" /> <!--text color of progress-text, default: same as left-track's color-->
+        <attr name="bsb_show_progress_in_float" format="boolean" /> <!--show bubble-progress in float or not, default: false-->
+        <attr name="bsb_touch_to_seek" format="boolean" /> <!--touch anywhere on track to quickly seek, default: false-->
+        <attr name="bsb_seek_by_section" format="boolean" /> <!--seek by section, the progress may not be linear, default: false-->
+        <attr name="bsb_bubble_color" format="color|reference" /> <!--color of bubble, default: same as left-track's color-->
+        <attr name="bsb_bubble_text_size" format="dimension|reference" /> <!--text size of bubble-progress, default: 14sp-->
+        <attr name="bsb_bubble_text_color" format="color|reference" /> <!--text color of bubble-progress, default: #ffffffff-->
+        <attr name="bsb_anim_duration" format="integer" /> <!--duration of animation, default: 200ms-->
+        <attr name="bsb_always_show_bubble" format="boolean" /> <!--bubble shows all time, default: false-->
+        <attr name="bsb_suffix" format="string" /> <!--后缀-->
     </declare-styleable>
 
 
     <declare-styleable name="UIZTextImageSytle">
-        <attr name="uiz_image_bg" format="reference"/>
-        <attr name="uiz_image_src" format="reference"/>
-        <attr name="uiz_image_width" format="dimension|reference"/>
-        <attr name="uiz_image_height" format="dimension|reference"/>
-        <attr name="uiz_text_color" format="reference|color"/>
-        <attr name="uiz_text_bg_color" format="reference|color"/>
-        <attr name="uiz_text_size" format="reference|dimension"/>
-        <attr name="uiz_text_width" format="reference|dimension"/>
-        <attr name="uiz_text_height" format="reference|dimension"/>
-        <attr name="uiz_text" format="reference|string"/>
-        <attr name="uiz_space" format="reference|dimension"/><!--两个空控件间距-->
-        <attr name="uiz_textBefore" format="boolean"/>
+        <attr name="uiz_image_bg" format="reference" />
+        <attr name="uiz_image_src" format="reference" />
+        <attr name="uiz_image_width" format="dimension|reference" />
+        <attr name="uiz_image_height" format="dimension|reference" />
+        <attr name="uiz_text_color" format="reference|color" />
+        <attr name="uiz_text_bg_color" format="reference|color" />
+        <attr name="uiz_text_size" format="reference|dimension" />
+        <attr name="uiz_text_width" format="reference|dimension" />
+        <attr name="uiz_text_height" format="reference|dimension" />
+        <attr name="uiz_text" format="reference|string" />
+        <attr name="uiz_space" format="reference|dimension" /><!--两个空控件间距-->
+        <attr name="uiz_textBefore" format="boolean" />
     </declare-styleable>
 
 
     <declare-styleable name="UIZTimeRemainStyle">
-        <attr name="uiz_out_circleColor" format="color|reference"/>
-        <attr name="uiz_middle_circleColor" format="color|reference"/>
-        <attr name="uiz_in_circleColor" format="color|reference"/>
-        <attr name="uiz_titleColor" format="color|reference"/>
-        <attr name="uiz_valueColor" format="color|reference"/>
-        <attr name="uiz_unitColor" format="color|reference"/>
-        <attr name="uiz_title" format="string|reference"/>
-        <attr name="uiz_line_bgColor" format="color|reference"/>
-        <attr name="uiz_line_processColor" format="color|reference"/>
-        <attr name="uiz_lineWidth" format="dimension|reference"/>
+        <attr name="uiz_out_circleColor" format="color|reference" />
+        <attr name="uiz_middle_circleColor" format="color|reference" />
+        <attr name="uiz_in_circleColor" format="color|reference" />
+        <attr name="uiz_titleColor" format="color|reference" />
+        <attr name="uiz_valueColor" format="color|reference" />
+        <attr name="uiz_unitColor" format="color|reference" />
+        <attr name="uiz_title" format="string|reference" />
+        <attr name="uiz_line_bgColor" format="color|reference" />
+        <attr name="uiz_line_processColor" format="color|reference" />
+        <attr name="uiz_lineWidth" format="dimension|reference" />
     </declare-styleable>
 
     <declare-styleable name="UIZOznerTempDialStyle">
-        <attr name="uiz_temp_dial_title" format="string|reference"/>
+        <attr name="uiz_temp_dial_title" format="string|reference" />
     </declare-styleable>
 
     <declare-styleable name="UIZTwoInfoTextStyle">
-        <attr name="uiz_left_text_size" format="dimension|reference"/>
-        <attr name="uiz_left_text_color" format="color|reference"/>
-        <attr name="uiz_left_text_value" format="string|reference"/>
-        <attr name="uiz_right_text_size" format="dimension|reference"/>
-        <attr name="uiz_right_text_color" format="color|reference"/>
-        <attr name="uiz_right_text_value" format="string|reference"/>
+        <attr name="uiz_left_text_size" format="dimension|reference" />
+        <attr name="uiz_left_text_color" format="color|reference" />
+        <attr name="uiz_left_text_value" format="string|reference" />
+        <attr name="uiz_right_text_size" format="dimension|reference" />
+        <attr name="uiz_right_text_color" format="color|reference" />
+        <attr name="uiz_right_text_value" format="string|reference" />
     </declare-styleable>
 
     <declare-styleable name="UIZRealTemp">
-        <attr name="uiz_real_temp_title" format="string|reference"/>
-        <attr name="uiz_real_temp_bottom" format="string|reference"/>
+        <attr name="uiz_real_temp_title" format="string|reference" />
+        <attr name="uiz_real_temp_bottom" format="string|reference" />
     </declare-styleable>
 
     <declare-styleable name="UIZTempDial">
-        <attr name="uiztemp_dial_bg_color" format="color|reference"/>
-        <attr name="uiztemp_dial_text_color" format="color|reference"/>
-        <attr name="uiztemp_dial_value_min" format="reference|integer"/>
-        <attr name="uiztemp_dial_value_max" format="reference|integer"/>
+        <attr name="uiztemp_dial_bg_color" format="color|reference" />
+        <attr name="uiztemp_dial_text_color" format="color|reference" />
+        <attr name="uiztemp_dial_value_min" format="reference|integer" />
+        <attr name="uiztemp_dial_value_max" format="reference|integer" />
     </declare-styleable>
 
     <declare-styleable name="PillarView">
-        <attr name="uiz_value" format="integer"/>
-        <attr name="uiz_background_color" format="color|reference"/>
-        <attr name="uiz_front_color" format="color|reference"/>
-        <attr name="uiz_bound_color" format="color|reference"/>
-        <attr name="uiz_front_cente_color" format="color|reference"/>
-        <attr name="uiz_show_bound" format="boolean"/>
+        <attr name="uiz_value" format="integer" />
+        <attr name="uiz_background_color" format="color|reference" />
+        <attr name="uiz_front_color" format="color|reference" />
+        <attr name="uiz_bound_color" format="color|reference" />
+        <attr name="uiz_front_cente_color" format="color|reference" />
+        <attr name="uiz_show_bound" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="MarqueeView">
         <attr name="marqueeview_repet_type" format="enum">
-            <enum name="repet_oncetime" value="0"/><!-- 播放一次 -->
-            <enum name="repet_interval" value="1"/>  <!--连续播放 循环结束再继续下次循环-->
-            <enum name="repet_continuous" value="2"/>  <!--连续播放 到末尾直接继续下次循环-->
+            <enum name="repet_oncetime" value="0" /><!-- 播放一次 -->
+            <enum name="repet_interval" value="1" />  <!--连续播放 循环结束再继续下次循环-->
+            <enum name="repet_continuous" value="2" />  <!--连续播放 到末尾直接继续下次循环-->
         </attr><!--循环模式-->
 
-        <attr name="marqueeview_text_distance" format="integer"/><!--每个item之间的距离-->
-        <attr name="marqueeview_text_startlocationdistance" format="float"/><!--开始的起始位置 按距离控件左边的百分比 0~1之间 -->
-        <attr name="marqueeview_text_speed" format="float"/><!--播放速度 也就是文字滚动速度-->
-        <attr name="marqueeview_text_color" format="color|reference"/><!-- 文字颜色 -->
-        <attr name="marqueeview_text_size" format="float"/><!-- 文字大小 -->
-        <attr name="marqueeview_isclickalbe_stop" format="boolean"/><!--是否点击暂停-->
-        <attr name="marqueeview_is_resetLocation" format="boolean"/><!--重新改变内容的时候 ， 是否初始化 位置，默认为true，改变-->
+        <attr name="marqueeview_text_distance" format="integer" /><!--每个item之间的距离-->
+        <attr name="marqueeview_text_startlocationdistance" format="float" /><!--开始的起始位置 按距离控件左边的百分比 0~1之间 -->
+        <attr name="marqueeview_text_speed" format="float" /><!--播放速度 也就是文字滚动速度-->
+        <attr name="marqueeview_text_color" format="color|reference" /><!-- 文字颜色 -->
+        <attr name="marqueeview_text_size" format="float" /><!-- 文字大小 -->
+        <attr name="marqueeview_isclickalbe_stop" format="boolean" /><!--是否点击暂停-->
+        <attr name="marqueeview_is_resetLocation" format="boolean" /><!--重新改变内容的时候 ， 是否初始化 位置，默认为true，改变-->
     </declare-styleable>
 
     <declare-styleable name="UIZPolygonalChart2">
-        <attr name="uizGridColor" format="color|reference"/>
-        <attr name="uizDateColor" format="color|reference"/>
-        <attr name="uizDefaultTagColor" format="color|reference"/>
-        <attr name="uizGradientStartColor" format="color|reference"/>
-        <attr name="uizGradientEndColor" format="color|reference"/>
-        <attr name="uizShowValueLine" format="boolean"/>
-        <attr name="uizMaxValue" format="integer"/>
-        <attr name="uizValueLineColor" format="color|reference"/>
+        <attr name="uizGridColor" format="color|reference" />
+        <attr name="uizDateColor" format="color|reference" />
+        <attr name="uizDefaultTagColor" format="color|reference" />
+        <attr name="uizGradientStartColor" format="color|reference" />
+        <attr name="uizGradientEndColor" format="color|reference" />
+        <attr name="uizShowValueLine" format="boolean" />
+        <attr name="uizMaxValue" format="integer" />
+        <attr name="uizValueLineColor" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="UIZCirclePercent">
+        <attr name="uizTextColor" format="color|reference" />
+        <attr name="uizPrecentColor" format="color|reference" />
+        <attr name="uizCircleColor" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomViewGroup">
+        <attr name="verticalSpacing" format="dimension|reference"/>
+        <attr name="horizontalSpacing" format="dimension|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomViewGroup_LayoutParams">
+        <attr name="layout_paddingLeft" format="reference|dimension"/>
+        <attr name="layout_paddingTop" format="dimension|reference"/>
     </declare-styleable>
 </resources>
