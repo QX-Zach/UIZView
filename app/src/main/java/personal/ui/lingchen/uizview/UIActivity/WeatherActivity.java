@@ -31,8 +31,10 @@ public class WeatherActivity extends AppCompatActivity {
         wvWeather.setWeatherScrollListener(new WeatherView.WeatherScrollListener() {
             @Override
             public void needNewData() {
-                currentHour -= 5;
-                addData(10, currentHour);
+                if (currentHour > 0) {
+                    currentHour -= 5;
+                    addData(10, currentHour);
+                }
             }
         });
     }

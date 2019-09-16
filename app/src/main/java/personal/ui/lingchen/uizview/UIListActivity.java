@@ -11,6 +11,7 @@ import android.widget.SimpleAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import personal.ui.lingchen.uizview.UIActivity.ArcMenuActivity;
 import personal.ui.lingchen.uizview.UIActivity.CirclePercentActivity;
 import personal.ui.lingchen.uizview.UIActivity.ZheXianActivity;
 
@@ -21,7 +22,8 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
 
     private String[] uiItemName = {
             "折线图->油压",
-            "环形百分比"
+            "环形百分比",
+            "弧形菜单"
     };
 
     @Override
@@ -42,6 +44,9 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
                 break;
             case 1:
                 startActivity(new Intent(UIListActivity.this, CirclePercentActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(UIListActivity.this, ArcMenuActivity.class));
                 break;
             default:
                 break;

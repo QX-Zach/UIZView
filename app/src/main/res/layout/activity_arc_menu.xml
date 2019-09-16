@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UIActivity.ArcMenuActivity">
+
+<!--    <personal.ui.lingchen.uizview.UI.UIZGradientCircleRing-->
+<!--        android:id="@+id/uizCirRing"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/uizPC"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"/>-->
+
+    <personal.ui.lingchen.uizview.UI.SweepView
+        android:id="@+id/uizCirRing"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/uizPC"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <personal.ui.lingchen.uizview.UI.UIZPercentCircle
+        android:id="@+id/uizPC"
+        android:layout_width="0dp"
+        app:circleWidth="16dp"
+        android:layout_height="0dp"
+        app:targetValue="50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uizCirRing" />
+
+    <Button
+        android:text="增加"
+        app:layout_constraintRight_toRightOf="@+id/uizPC"
+        app:layout_constraintBottom_toBottomOf="@+id/uizPC"
+        app:layout_constraintTop_toTopOf="@+id/uizPC"
+        app:layout_constraintLeft_toLeftOf="@+id/uizPC"
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+
+        android:text="零"
+        app:layout_constraintRight_toRightOf="@+id/uizPC"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintTop_toTopOf="@+id/uizPC"
+        app:layout_constraintLeft_toLeftOf="@+id/uizPC"
+        android:id="@+id/btnZero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="100"
+        app:layout_constraintRight_toRightOf="@+id/uizPC"
+        app:layout_constraintBottom_toBottomOf="@+id/uizPC"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdd"
+        app:layout_constraintLeft_toLeftOf="@+id/uizPC"
+        android:id="@+id/btn100"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</android.support.constraint.ConstraintLayout>

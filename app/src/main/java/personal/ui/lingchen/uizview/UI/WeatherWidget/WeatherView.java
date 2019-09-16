@@ -262,8 +262,16 @@ public class WeatherView extends View {
             int tH = getFontHeight(mPaint);
             int orgY = (int) ((rowHeight + tH) / 2);
             for (int i = weatherData.size() - 1; i >= 0; i--) {
+                //绘制日期
+                mPaint.setTextSize(dpToPx(12));
+                int dW = getStringWidth(mPaint, weatherData.get(i).getDate());
+                canvas.drawText(weatherData.get(i).getDate(), leftStartX + (columnWidth - dW) / 2 + columnWidth * (i + 1) + scrollOffset
+                        , orgY - textHeight / 2, mPaint);
+                //绘制小时
+                mPaint.setTextSize(dpToPx(15));
                 int tW = getStringWidth(mPaint, weatherData.get(i).getTime());
-                canvas.drawText(weatherData.get(i).getTime(), leftStartX + (columnWidth - tW) / 2 + columnWidth * (i + 1) + scrollOffset, orgY, mPaint);
+                canvas.drawText(weatherData.get(i).getTime(), leftStartX + (columnWidth - tW) / 2 + columnWidth * (i + 1) + scrollOffset
+                        , orgY + textHeight / 2, mPaint);
             }
 
             //绘制天气
@@ -534,6 +542,10 @@ public class WeatherView extends View {
          * 风力
          */
         private float FS;
+
+        public String getDate() {
+            return "08-09";
+        }
 
         public String getTime() {
 //            if (TextUtils.isEmpty(Time) || "null".equals(Time)) {

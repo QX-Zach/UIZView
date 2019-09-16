@@ -209,4 +209,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <EditText
+        android:theme="@style/BiliInputNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="浩泽牌YCZ-CL63-R3型纯水机"
+        android:textAlignment="center" />
+
 </LinearLayout>

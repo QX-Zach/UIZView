@@ -168,4 +168,5 @@
     <color name="dish_text_unselected">#ffbebebe</color>
     <color name="dish_control_selected">#ff5a73f3</color>
     <color name="afda">#ff0df614</color>
+    <color name="bili_name_input_edit">#3C89F3</color>
 </resources>
