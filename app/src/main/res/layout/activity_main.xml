@@ -217,4 +217,28 @@
         android:text="浩泽牌YCZ-CL63-R3型纯水机"
         android:textAlignment="center" />
 
+    <personal.ui.lingchen.uizview.UI.ZNormalSetItem
+        android:id="@+id/znsItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:leftIconHeight="50dp"
+        app:leftIconWidth="50dp"
+        app:leftText="@string/app_name"
+        app:leftTextSize="14dp"
+        app:rightIcon="@drawable/right_arrow"
+        app:rightIconHeight="20dp"
+        app:rightIconWidth="20dp"
+        app:rightText="@string/action_settings" />
+
+    <ImageView
+        android:src="@drawable/composer_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:textSize="14dp"
+        android:layout_width="wrap_content"
+        android:text="@string/app_name"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

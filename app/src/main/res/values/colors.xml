@@ -169,4 +169,18 @@
     <color name="dish_control_selected">#ff5a73f3</color>
     <color name="afda">#ff0df614</color>
     <color name="bili_name_input_edit">#3C89F3</color>
+
+    <color name="bili_filter_a">#ff51f2ac</color>
+    <color name="bili_filter_a_end">#ff45e5bd</color>
+    <color name="bili_filter_a_bg">#ffe4fdf0</color>
+
+    <color name="bili_filter_b">#ff7fe6fa</color>
+    <color name="bili_filter_b_end">#ff1e9bf7</color>
+    <color name="bili_filter_b_bg">#ffdbf1fe</color>
+    <color name="bili_filter_c">#fff0cb56</color>
+    <color name="bili_filter_c_end">#ffeea322</color>
+    <color name="bili_filter_c_bg">#fff2e6be</color>
+    <color name="bili_filter_d">#ffc89cff</color>
+    <color name="bili_filter_d_end">#ffa14eeb</color>
+    <color name="bili_filter_d_bg">#ffecd7ff</color>
 </resources>

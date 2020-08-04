@@ -29,6 +29,7 @@ import personal.ui.lingchen.uizview.UI.HexagonDrawable;
 import personal.ui.lingchen.uizview.UI.Snowflake.SnowFlokeActivity;
 import personal.ui.lingchen.uizview.UI.UIZTextImageButton;
 import personal.ui.lingchen.uizview.UI.UIZTimeRemain;
+import personal.ui.lingchen.uizview.UI.ZNormalSetItem;
 import personal.ui.lingchen.uizview.UIActivity.ArcHeaderViewActivity;
 import personal.ui.lingchen.uizview.UIActivity.BezierTestActivity;
 import personal.ui.lingchen.uizview.UIActivity.CameraTestActivity;
@@ -76,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnGradient;
     @BindView(R.id.btnWeather)
     Button btnWeather;
+    @BindView(R.id.znsItem)
+    ZNormalSetItem zNormalSetItem;
 
     private boolean isLightOn = false;
     private CameraManager cameraManager;
@@ -117,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.e(TAG, "onCreate: OznerColorUtils:" + OznerColorUtils.caculateColor(0, 0xff0196ff, 0xffb159ed, new int[]{}));
 
         Log.e(TAG, "onCreate: 20长度的UUID：" + get20UUID());
+
     }
 
     private int roundUpToPowerOf2(int number) {

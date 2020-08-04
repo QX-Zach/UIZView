@@ -13,6 +13,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import personal.ui.lingchen.uizview.UIActivity.ArcMenuActivity;
 import personal.ui.lingchen.uizview.UIActivity.CirclePercentActivity;
+import personal.ui.lingchen.uizview.UIActivity.PercentCircleActivity;
+import personal.ui.lingchen.uizview.UIActivity.UIZRippleIntroActivity;
 import personal.ui.lingchen.uizview.UIActivity.ZheXianActivity;
 
 public class UIListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -23,7 +25,9 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
     private String[] uiItemName = {
             "折线图->油压",
             "环形百分比",
-            "弧形菜单"
+            "弧形菜单",
+            "水波",
+            "厨上水机圆环"
     };
 
     @Override
@@ -47,6 +51,12 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
                 break;
             case 2:
                 startActivity(new Intent(UIListActivity.this, ArcMenuActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(UIListActivity.this, UIZRippleIntroActivity.class));
+                break;
+            case 4:
+                startActivity(new Intent(UIListActivity.this, PercentCircleActivity.class));
                 break;
             default:
                 break;

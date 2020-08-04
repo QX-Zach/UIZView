@@ -18,7 +18,7 @@ import android.view.View;
  */
 public class SweepView extends View {
     private Paint mPaint;
-    private int color = 0xffDBF1FE;
+    private int color = 0xffbcbcbc;
     private int[] mCircleColors = new int[]{0xff8cdefa, 0xff14c0fa, 0xff24e5ce, 0xff0df614, 0xfff8c12e, 0xfff6530b, 0xfff6b99f};
     private float[] mcolorPoints = new float[]{0.1f, 0.25f, 0.325f, 0.425f, 0.6f, 0.75f, 0.9f};
     public SweepView(Context context) {

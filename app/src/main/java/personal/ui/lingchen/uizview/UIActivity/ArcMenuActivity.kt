@@ -13,6 +13,7 @@ class ArcMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_arc_menu)
+
         btnAdd.setOnClickListener {
             if (value >= 100) {
                 value = 0
@@ -32,9 +33,12 @@ class ArcMenuActivity : AppCompatActivity() {
         }
 
         btn100.setOnClickListener {
-            value = 100
+//            value = 100
+//            uizPC.apply {
+//                targetValue = 100
+//            }
             uizPC.apply {
-                targetValue = 100
+                isOnLine = !uizPC.isOnLine
             }
         }
         test()

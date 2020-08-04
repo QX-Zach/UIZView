@@ -26,11 +26,15 @@
         android:layout_width="0dp"
         android:layout_height="0dp"/>
 
+
     <personal.ui.lingchen.uizview.UI.UIZPercentCircle
         android:id="@+id/uizPC"
         android:layout_width="0dp"
         app:circleWidth="16dp"
         android:layout_height="0dp"
+        app:bgColor="@color/bili_filter_d_bg"
+        app:valueStartColor="@color/bili_filter_d"
+        app:valueEndColor="@color/bili_filter_d_end"
         app:targetValue="50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -191,9 +191,38 @@
 
     <declare-styleable name="UIZPercentCircle">
         <attr name="bgColor" format="color|reference"/>
-        <attr name="valueColor" format="color|reference"/>
+        <attr name="valueStartColor" format="color|reference"/>
+        <attr name="valueEndColor" format="color|reference"/>
         <attr name="circleWidth" format="dimension|reference"/>
         <attr name="thumbColor" format="color|reference"/>
         <attr name="targetValue" format="integer|reference"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="ZNormalSetItem">
+        <attr name="leftIcon" format="reference"/>
+        <attr name="leftIconBackground" format="reference|color"/>
+        <attr name="leftIconWidth" format="dimension"/>
+        <attr name="leftIconHeight" format="dimension"/>
+
+        <attr name="rightIcon" format="reference"/>
+        <attr name="rightIconBackground" format="reference|color"/>
+        <attr name="rightIconWidth" format="dimension"/>
+        <attr name="rightIconHeight" format="dimension"/>
+
+        <attr name="leftText" format="reference|string"/>
+        <attr name="leftTextColor" format="reference|color"/>
+        <attr name="leftTextSize" format="dimension"/>
+        <attr name="leftTextBackground" format="reference|color"/>
+
+        <attr name="rightText" format="reference|string"/>
+        <attr name="rightTextColor" format="reference|color"/>
+        <attr name="rightTextSize" format="dimension"/>
+        <attr name="rightTextBackground" format="reference|color"/>
+
+        <attr name="rightLabelIcon" format="reference"/>
+        <attr name="rightLabelBackground" format="reference|color"/>
+        <attr name="rightLabelWidth" format="dimension"/>
+        <attr name="rightLabelHeight" format="dimension"/>
     </declare-styleable>
 </resources>

@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
+import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
 import personal.ui.lingchen.uizview.R
@@ -30,14 +31,14 @@ class UIZPercentCircle : View {
     private var centerY: Float = 0f
     private var radius: Float = 0f
     private val rectF = RectF()
-    private val color = -0x240e02
+    private val offLineBGColor = -0x121213
+    private val offLineValueColor = -0x434344
     private val defaultBGColor = -0x240e02
-    private val defaultValueColor = -0xe16409
-    private val defaultValueEndColor = -0xe16409
-    private val defaultValuleStartColor = -0x801906
+    var valueStartColor = -0x801906
+    var valueEndColor = -0xe16409
     private val mCircleColors = intArrayOf(-0x732106, -0xeb3f06, -0xdb1a32, -0xf209ec, -0x73ed2, -0x9acf5, -0x94661)
     private val defaultThumbColor = Color.WHITE
-    private val blurMaskFilter = BlurMaskFilter(20f, BlurMaskFilter.Blur.SOLID)
+    private val blurMaskFilter = BlurMaskFilter(10f, BlurMaskFilter.Blur.SOLID)
 
     private var animator: ValueAnimator? = null
 
@@ -56,17 +57,31 @@ class UIZPercentCircle : View {
     }
 
 
-    var bgColor: Int = defaultBGColor.toInt()
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        event?.let {
+            when (it.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    lastValue = 0
+                    startAnimator()
+                }
+            }
+        }
+        return super.onTouchEvent(event)
+    }
+
+
+    var isOnLine = true
         set(value) {
             field = value
             postInvalidate()
         }
 
-    var valueColor: Int = defaultValueColor.toInt()
+    var bgColor: Int = defaultBGColor
         set(value) {
             field = value
             postInvalidate()
         }
+
     var thumbColor: Int = defaultThumbColor
         set(value) {
             field = value
@@ -94,8 +109,9 @@ class UIZPercentCircle : View {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.UIZPercentCircle)
-        bgColor = typedArray.getColor(R.styleable.UIZPercentCircle_bgColor, defaultBGColor.toInt())
-        valueColor = typedArray.getColor(R.styleable.UIZPercentCircle_valueColor, defaultValueColor.toInt())
+        bgColor = typedArray.getColor(R.styleable.UIZPercentCircle_bgColor, defaultBGColor)
+        valueStartColor = typedArray.getColor(R.styleable.UIZPercentCircle_valueStartColor, valueStartColor)
+        valueEndColor = typedArray.getColor(R.styleable.UIZPercentCircle_valueEndColor, valueEndColor)
         circleWidth = typedArray.getDimension(R.styleable.UIZPercentCircle_circleWidth, circleWidth)
         thumbColor = typedArray.getColor(R.styleable.UIZPercentCircle_thumbColor, defaultThumbColor)
         targetValue = typedArray.getInt(R.styleable.UIZPercentCircle_targetValue, 0)
@@ -130,34 +146,39 @@ class UIZPercentCircle : View {
             //绘制背景
             mPaint.shader = null
             mPaint.maskFilter = null
-            mPaint.color = bgColor
+            mPaint.color = if (isOnLine) bgColor else offLineBGColor
             mPaint.style = Paint.Style.STROKE
             mPaint.strokeWidth = circleWidth
             it.drawCircle(centerX, centerY, radius, mPaint)
 
             //绘制值
-            mPaint.color = valueColor
+
 
             //绘制起始点圆环
+
+            if (isOnLine) {
+                var shader = SweepGradient(centerX, centerY, intArrayOf(valueStartColor, valueEndColor, valueStartColor), floatArrayOf(0f, 0.96f, 1f))
+                var matrix = Matrix()
+                matrix.setRotate(180f, centerX, centerY)
+                shader.setLocalMatrix(matrix)
+                mPaint.shader = shader
+            } else {
+                mPaint.shader = null
+                mPaint.color = offLineValueColor
+            }
+
+            if (tempValue == 0) {
+//                mPaint.color = valueStartColor
+                mPaint.style = Paint.Style.FILL
+                it.drawCircle(centerX - radius, centerY, circleWidth / 2, mPaint)
+            }
+
             mPaint.maskFilter = blurMaskFilter
-            mPaint.style = Paint.Style.FILL
-            it.drawCircle(centerX - radius, centerY, circleWidth / 2, mPaint)
-
-
             mPaint.style = Paint.Style.STROKE
             var sweep = tempValue * 360f / 100f
             if (tempValue == 0) {
                 sweep = 0.01f
             }
-
-
-            var shader = SweepGradient(centerX, centerY, intArrayOf(defaultValuleStartColor, defaultValueEndColor,defaultValueEndColor,defaultValuleStartColor), floatArrayOf(0f, 0.9f,0.95f,1f))
-            var matrix = Matrix()
-            matrix.setRotate(180f, centerX, centerY)
-            shader.setLocalMatrix(matrix)
-            mPaint.shader = shader
-
-
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 it.drawArc(rectF.left, rectF.top, rectF.right, rectF.bottom, -180f, sweep, false, mPaint)
@@ -167,8 +188,9 @@ class UIZPercentCircle : View {
 //            }
 
             //绘制圆点
+            mPaint.shader = null
             mPaint.maskFilter = null
-            mPaint.color = thumbColor
+            mPaint.color = Color.WHITE
             mPaint.style = Paint.Style.FILL
             it.drawCircle(centerX - radius, centerY, circleWidth / 4, mPaint)
         }
