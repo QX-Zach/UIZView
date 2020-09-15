@@ -22,4 +22,10 @@
         <item name="colorControlActivated">@color/bili_name_input_edit</item>
 
     </style>
+
+    <style name="TreeNodeStyle">
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
 </resources>
