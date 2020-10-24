@@ -183,4 +183,7 @@
     <color name="bili_filter_d">#ffc89cff</color>
     <color name="bili_filter_d_end">#ffa14eeb</color>
     <color name="bili_filter_d_bg">#ffecd7ff</color>
+    <color name="color_129986">#129986</color>
+    <color name="color_f0f2f5">#F0F2F5</color>
+    <color name="color_606266">#606266</color>
 </resources>

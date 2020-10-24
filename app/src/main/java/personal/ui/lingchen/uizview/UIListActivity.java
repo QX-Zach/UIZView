@@ -13,6 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import personal.ui.lingchen.uizview.UIActivity.ArcMenuActivity;
 import personal.ui.lingchen.uizview.UIActivity.CirclePercentActivity;
+import personal.ui.lingchen.uizview.UIActivity.PageNumIndictorActivity;
 import personal.ui.lingchen.uizview.UIActivity.PercentCircleActivity;
 import personal.ui.lingchen.uizview.UIActivity.TreeViewActivity;
 import personal.ui.lingchen.uizview.UIActivity.UIZRippleIntroActivity;
@@ -29,7 +30,8 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
             "弧形菜单",
             "水波",
             "厨上水机圆环",
-            "TreeView"
+            "TreeView",
+            "页码指示器"
     };
 
     @Override
@@ -62,6 +64,9 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
                 break;
             case 5:
                 startActivity(new Intent(UIListActivity.this, TreeViewActivity.class));
+                break;
+            case 6:
+                startActivity(new Intent(UIListActivity.this, PageNumIndictorActivity.class));
                 break;
             default:
                 break;

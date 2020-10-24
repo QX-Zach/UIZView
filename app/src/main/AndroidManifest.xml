@@ -14,7 +14,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UIActivity.TreeViewActivity"></activity>
+        <activity
+            android:name=".UIActivity.PageNumIndictorActivity"
+            android:screenOrientation="landscape"></activity>
+        <activity android:name=".UIActivity.TreeViewActivity" />
         <activity android:name=".UIActivity.PercentCircleActivity" />
         <activity android:name=".UIActivity.UIZRippleIntroActivity" />
         <activity android:name=".UIActivity.ArcMenuActivity" />

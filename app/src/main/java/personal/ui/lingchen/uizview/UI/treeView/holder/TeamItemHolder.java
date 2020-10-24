@@ -18,6 +18,7 @@ public class TeamItemHolder extends TreeNode.BaseNodeViewHolder<String> {
     private LayoutInflater layoutInflater;
     private TextView tvTitle;
     private ImageView ivIcon;
+    private TreeNode treeNode;
 
     public TeamItemHolder(Context context) {
         super(context);
@@ -26,6 +27,7 @@ public class TeamItemHolder extends TreeNode.BaseNodeViewHolder<String> {
 
     @Override
     public View createNodeView(TreeNode node, String value) {
+        treeNode = node;
         final View view = layoutInflater.inflate(R.layout.layout_team_tree_view_item, null, false);
         tvTitle = view.findViewById(R.id.tvTitle);
         ivIcon = view.findViewById(R.id.ivIcon);
@@ -34,10 +36,10 @@ public class TeamItemHolder extends TreeNode.BaseNodeViewHolder<String> {
 
         if (node.isLeaf()) {
             ivIcon.setVisibility(View.GONE);
-            tvTitle.setPadding(20,5,10,5);
-        }else {
+            tvTitle.setPadding(20, 5, 10, 5);
+        } else {
             ivIcon.setVisibility(View.VISIBLE);
-            tvTitle.setPadding(20,5,20,5);
+            tvTitle.setPadding(20, 5, 20, 5);
         }
 
         return view;
@@ -45,6 +47,13 @@ public class TeamItemHolder extends TreeNode.BaseNodeViewHolder<String> {
 
     @Override
     public void toggle(boolean active) {
+        if (treeNode.isLeaf()) {
+            ivIcon.setVisibility(View.GONE);
+            tvTitle.setPadding(20, 5, 10, 5);
+        } else {
+            ivIcon.setVisibility(View.VISIBLE);
+            tvTitle.setPadding(20, 5, 20, 5);
+        }
         ivIcon.setImageDrawable(ContextCompat.getDrawable(context, active ? R.mipmap.partner_circle_minus_gray : R.mipmap.partner_circle_add_gray));
     }
 }

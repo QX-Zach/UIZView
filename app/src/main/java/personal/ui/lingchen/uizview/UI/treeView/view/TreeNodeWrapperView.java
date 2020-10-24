@@ -27,12 +27,12 @@ public class TreeNodeWrapperView extends LinearLayout{
         setOrientation(LinearLayout.VERTICAL);
 
         nodeContainer = new RelativeLayout(getContext());
-        nodeContainer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        nodeContainer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         nodeContainer.setId(R.id.node_header);
 
         ContextThemeWrapper newContext = new ContextThemeWrapper(getContext(), containerStyle);
         nodeItemsContainer = new LinearLayout(newContext, null, containerStyle);
-        nodeItemsContainer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        nodeItemsContainer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         nodeItemsContainer.setId(R.id.node_items);
         nodeItemsContainer.setOrientation(LinearLayout.VERTICAL);
         nodeItemsContainer.setVisibility(View.GONE);

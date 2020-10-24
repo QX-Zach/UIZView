@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 import personal.ui.lingchen.uizview.R;
-import personal.ui.lingchen.uizview.UI.treeView.holder.SimpleViewHolder;
+import personal.ui.lingchen.uizview.UI.treeView.holder.TeamItemHolder;
 import personal.ui.lingchen.uizview.UI.treeView.model.TreeNode;
 
 /**
@@ -31,7 +31,7 @@ public class AndroidTreeView {
     private Context mContext;
     private boolean applyForRoot;
     private int containerStyle = 0;
-    private Class<? extends TreeNode.BaseNodeViewHolder> defaultViewHolderClass = SimpleViewHolder.class;
+    private Class<? extends TreeNode.BaseNodeViewHolder> defaultViewHolderClass = TeamItemHolder.class;
     private TreeNode.TreeNodeClickListener nodeClickListener;
     private TreeNode.TreeNodeLongClickListener nodeLongClickListener;
     private boolean mSelectionModeEnabled;
@@ -212,7 +212,7 @@ public class AndroidTreeView {
 
     }
 
-    private void collapseNode(TreeNode node, final boolean includeSubnodes) {
+    public void collapseNode(TreeNode node, final boolean includeSubnodes) {
         node.setExpanded(false);
         TreeNode.BaseNodeViewHolder nodeViewHolder = getViewHolderForNode(node);
 
