@@ -1,6 +1,7 @@
 package personal.ui.lingchen.uizview.UI.treeView.view;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -135,6 +136,8 @@ public class AndroidTreeView {
         });
 
         expandNode(mRoot, false);
+        ViewGroup.LayoutParams newLp = new ViewGroup.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(newLp);
         return view;
     }
 

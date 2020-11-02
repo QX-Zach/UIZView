@@ -3,6 +3,7 @@ package personal.ui.lingchen.uizview.UIActivity
 import android.media.tv.TvView
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
@@ -20,9 +21,9 @@ import personal.ui.lingchen.uizview.UI.treeView.view.TwoDScrollView
  * tree view
  */
 class TreeViewActivity : AppCompatActivity() {
-    val TAG:String = "TreeViewActivity"
+    val TAG: String = "TreeViewActivity"
     lateinit var tView: AndroidTreeView
-    val title: String = "zach item with very long title"
+    val title: String = "item"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tree_view)
@@ -45,10 +46,10 @@ class TreeViewActivity : AppCompatActivity() {
         fillFolder(s3)
 //        fillFolder(s1)
         fillFolder(s2)
-//        root.addChildren(s1, s2)
+        root.addChildren(s2,s3)
 //        root.addChild(s1)
         tView = AndroidTreeView(this, root)
-        tView.setDefaultAnimation(true)
+        tView.setDefaultAnimation(false)
         tView.setUse2dScroll(true)
 
         tView.setDefaultNodeClickListener({ treeNode: TreeNode, any: Any ->
@@ -57,17 +58,17 @@ class TreeViewActivity : AppCompatActivity() {
         tView.setDefaultContainerStyle(R.style.TreeNodeStyle, true)
         val view = tView.getView()
         rlayContainer.addView(view)
-        tView.addNode(root,s1)
-        tView.addNode(s1, s3)
+        tView.addNode(root, s1)
+//        tView.addNode(s1, s3)
         tView.expandNode(s1)
     }
 
     private fun fillFolder(folder: TreeNode) {
         var currentNode = folder
-        for (i in 0..9) {
+        for (i in 0..40) {
             val file = TreeNode("zach$i $title")//.setViewHolder(TeamItemHolder(this))
             currentNode.addChild(file)
-            currentNode = file
+//            currentNode = file
         }
     }
 

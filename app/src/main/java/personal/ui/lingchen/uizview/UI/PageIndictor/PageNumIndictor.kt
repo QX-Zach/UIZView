@@ -52,10 +52,6 @@ class PageNumIndictor @JvmOverloads constructor(
      */
     private var currentSelectIndex: Int = 1
 
-    private var startIndex: Int = 1
-    private var endIndex: Int = totalPage
-
-
     private val showList: MutableList<PageNumItem> = mutableListOf()
     private val dataAdapter: PageNumAdapter = PageNumAdapter(context).apply {
         pageIndexClick = object : PageNumAdapter.ItemClick {
