@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,8 +16,74 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:launchMode="singleInstance"
+            android:enabled="false"
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias
+            android:name=".defaultIcon"
+            android:enabled="true"
+            android:icon="@mipmap/ic_launcher"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".iconOne"
+            android:enabled="false"
+            android:icon="@mipmap/ic_launcher_one"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".iconTwo"
+            android:enabled="false"
+            android:icon="@mipmap/ic_launcher_two"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".iconThree"
+            android:enabled="false"
+            android:icon="@mipmap/ic_launcher_three"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".iconFour"
+            android:enabled="false"
+            android:icon="@mipmap/ic_launcher_four"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity android:name=".UIActivity.ChangeAppIconActivity" android:label="修改App图标"></activity>
+        <activity
             android:name=".UIActivity.PageNumIndictorActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity android:name=".UIActivity.TreeViewActivity" />
         <activity android:name=".UIActivity.PercentCircleActivity" />
         <activity android:name=".UIActivity.UIZRippleIntroActivity" />
@@ -26,14 +93,8 @@
             android:name=".UIActivity.ZheXianActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".UIListActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
         <activity android:name=".UIActivity.IndicatorProgressActivity" />
         <activity android:name=".LoadingUI.SlackLoading.SlackLoadingActivity" />
         <activity android:name=".UIActivity.WinnowerActivity" />

@@ -36,4 +36,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 //    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'com.blankj:utilcode:1.30.5'
 }

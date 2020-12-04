@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import personal.ui.lingchen.uizview.UIActivity.ArcMenuActivity;
+import personal.ui.lingchen.uizview.UIActivity.ChangeAppIconActivity;
 import personal.ui.lingchen.uizview.UIActivity.CirclePercentActivity;
 import personal.ui.lingchen.uizview.UIActivity.PageNumIndictorActivity;
 import personal.ui.lingchen.uizview.UIActivity.PercentCircleActivity;
@@ -31,7 +32,8 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
             "水波",
             "厨上水机圆环",
             "TreeView",
-            "页码指示器"
+            "页码指示器",
+            "修改桌面图标"
     };
 
     @Override
@@ -67,6 +69,9 @@ public class UIListActivity extends AppCompatActivity implements AdapterView.OnI
                 break;
             case 6:
                 startActivity(new Intent(UIListActivity.this, PageNumIndictorActivity.class));
+                break;
+            case 7:
+                startActivity(new Intent(UIListActivity.this, ChangeAppIconActivity.class));
                 break;
             default:
                 break;

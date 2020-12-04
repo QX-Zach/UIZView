@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UIActivity.ChangeAppIconActivity">
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/turquoise"
+        android:text="保存"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <GridLayout
+        android:layout_width="0dp"
+
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:columnCount="3"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/llayDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <RadioButton
+                android:id="@+id/rbDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="默认" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher_one" />
+
+            <RadioButton
+                android:id="@+id/rbOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="第一个" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher_two" />
+
+            <RadioButton
+                android:id="@+id/rbTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="第二个" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher_three" />
+
+            <RadioButton
+                android:id="@+id/rbThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第三个" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher_four" />
+
+            <RadioButton
+                android:id="@+id/rbFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第四个" />
+        </LinearLayout>
+    </GridLayout>
+</android.support.constraint.ConstraintLayout>
